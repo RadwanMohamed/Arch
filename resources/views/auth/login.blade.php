@@ -3,10 +3,19 @@
 @section('content')
 
 
+
   <div class="container margin">
-     <form method="POST" action="{{ route('login') }}" >
+
+      <div class=" form-group  contact_bottom">
+          <h3>تسجيل الدخول</h3>
+      </div>
+
+      <form method="POST" action="{{ route('login') }}" >
+
+
+
          @csrf
-         <div class="form-group row">
+         <div class="form-group row" style="margin-top:50px">
              <div class="col-md-6" >
              <input id="email" placeholder="البريد الالكتروني" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
              @if ($errors->has('email'))
