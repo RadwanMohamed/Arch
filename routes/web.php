@@ -20,6 +20,10 @@
 /**
  * Admin Routes
  */
+Route::group(['middleware'=>['admin','web']],function (){
+    Route::resource('/adminpanel',"AdminController");
+
+});
 
 
 
