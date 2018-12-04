@@ -39,6 +39,7 @@
 
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    @yield('header')
 </head>
 <body class="hold-transition skin-blue sidebar-mini" style="direction: rtl">
 <div class="wrapper">
@@ -333,38 +334,19 @@
             </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MAIN NAVIGATION</li>
-                <li class="active treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-left"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    </ul>
-                </li>
-                 </ul>
+         @include('admin.layouts.nav')
         </section>
         <!-- /.sidebar -->
     </aside>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
 
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </section>
 
         <!-- Main content -->
         <section class="content">
             <!-- Small boxes (Stat box) -->
             @yield('content')
+
         </section>
     </div>
 
@@ -619,5 +601,7 @@
 {!! Html::script('admin/dist/js/adminlte.min.js') !!}
 {!! Html::script('admin/dist/js/pages/dashboard.js') !!}
 {!! Html::script('admin/dist/js/demo.js') !!}
+@yield('footer')
+
 </body>
 </html>

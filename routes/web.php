@@ -21,9 +21,15 @@
  * Admin Routes
  */
 Route::group(['middleware'=>['admin','web']],function (){
-    Route::resource('/adminpanel',"AdminController");
+
+    Route::resource('/adminpanel',"AdminController")->only('index');
+    Route::resource('/admin-panel/users',"UserController")->except('show');
+
+    Route::get('/admin-panel/admin/{user}/edit',"AdminController@editPassword")->middleware('userauth');
+    Route::put('/admin-panel/admin/{user}',"AdminController@updatePassword");
 
 });
+
 
 
 

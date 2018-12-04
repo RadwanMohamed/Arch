@@ -95,12 +95,12 @@
 
     </div>
 
-@yield('footer')
 
 {!! Html::script('website/js/responsive-nav.js') !!}
     {!! Html::script('website/js/bootstrap.min.js') !!}
     {!! Html::script('website/js/jquery.flexslider.js') !!}
     {!! Html::script('js/app.js') !!}
+    @yield('footer')
 
 </body>
 </html>
