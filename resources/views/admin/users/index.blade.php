@@ -18,10 +18,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>
-            Data Tables
-            <small>advanced tables</small>
-        </h1>
+
         <ol class="breadcrumb">
             <li><a href="{{url('adminpanel')}}"><i class="fa fa-dashboard"></i> الرئيسية </a></li>
             <li><a href="{{url('admin-panel/users/create')}}"> اضافة عضو جديد </a></li>

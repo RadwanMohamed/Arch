@@ -112,9 +112,7 @@ class UserController extends Controller
             ->editColumn('admin', function ($model) {
                 return $model->admin == 0 ? '<span class="badge badge-info">' . 'عضو' . '</span>' : '<span class="badge badge-warning">' . 'مدير الموقع' . '</span>';
             })
-            ->editColumn('mybu', function ($model) {
-                return '<a href="' . url('/admin-panel/bu/' . $model->id) . '"> <span class="btn btn-danger btn-circle"> <i class="fa fa-link"></i> </span> </a>';
-            })
+
             ->editColumn('control', function ($model) {
                 $all = '<a href="' . url('/admin-panel/users/' . $model->id . '/edit') . '" class="btn btn-info btn-circle"><i class="fa fa-edit"></i></a> ';
                 if ($model->id != 1) {
