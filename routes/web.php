@@ -34,6 +34,11 @@ Route::group(['middleware'=>['admin','web']],function (){
 
     Route::get('admin-panel/site/settings','SiteSettingController@index');
     Route::put('admin-panel/site/settings','SiteSettingController@update');
+
+
+    Route::resource('/admin-panel/buildings',"BuildingController")->except('show');
+
+
 });
 
 

@@ -13,10 +13,7 @@
 @section('content')
 
     <section class="content-header">
-        <h1>
-            Data Tables
-            <small>advanced tables</small>
-        </h1>
+
         <ol class="breadcrumb">
             <li><a href="{{url('adminpanel')}}"><i class="fa fa-dashboard"></i> الرئيسية </a></li>
             <li><a href="{{url('admin-panel/users')}}"> الاعضاء </a></li>
@@ -36,10 +33,10 @@
                         <h3 class="box-title"> التعديل على البيانات </h3>
                     </div>
                     @if (session('message'))
-                        <div class="alert alert-info">
+                        <div class="alert alert-danger">
                             {{ session('message') }}
                         </div>
-                @endif
+                     @endif
                     <!-- /.box-header -->
                     <div class="box-body">
                         {!! Form::open(['route' =>['users.update',$user->id], 'method' => 'put']) !!}

@@ -33,6 +33,22 @@
         </ul>
     </li>
 
+    {{--  العقارات  --}}
+
+    <li class=" treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span> العقارات </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{url('/admin-panel/buildings')}}"><i class="fa fa-circle-o"></i> عرض جميع العقارات  </a></li>
+            <li><a href="{{url('/admin-panel/buildings/create')}}"><i class="fa fa-circle-o"></i>  اضف عقار جديد  </a></li>
+        </ul>
+    </li>
+
 
 
 

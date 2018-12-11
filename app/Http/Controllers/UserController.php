@@ -88,6 +88,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        $this->deleteRelation($user);
         if($user->id == 1)
             returnredirect("admin-panel/users")->with('cant delete user no 1');
         $user->delete();
@@ -128,5 +129,9 @@ class UserController extends Controller
             })->escapeColumns([])
             ->make(true);
 
+    }
+    protected function deleteRelation($user){
+        if ($user::has('buildings'))
+            $user->buildings()->delete();
     }
 }

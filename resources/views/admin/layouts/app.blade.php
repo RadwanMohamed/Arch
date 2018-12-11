@@ -602,6 +602,9 @@
 {!! Html::script('admin/dist/js/pages/dashboard.js') !!}
 {!! Html::script('admin/dist/js/demo.js') !!}
 @yield('footer')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 
 </body>
 </html>

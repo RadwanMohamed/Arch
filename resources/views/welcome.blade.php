@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title')
-    اهلا بك
+    {{siteSetting('sitename')}}
+
 @endsection
 
 <!--
