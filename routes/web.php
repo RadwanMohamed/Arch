@@ -43,6 +43,9 @@ Route::group(['middleware'=>['admin','web']],function (){
 
 
 
+Route::get("/buildings",'HomeBuildingController@allBuildings');
+Route::get("/buildings/possession/{type}",'HomeBuildingController@property');
+Route::get("/buildings/type/{type}",'HomeBuildingController@type');
 
 
 
@@ -53,6 +56,3 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

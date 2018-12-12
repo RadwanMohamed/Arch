@@ -28,14 +28,15 @@
 
     @yield('header')
 </head>
-<body style="direction: rtl">
+<body style="direction: rtl" lang="ar">
     <div id="app">
         <nav class="">
             <div class="header">
-                <div class="container"> <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
+                <div class="container"> <a class="navbar-brand" style="float: right" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
                     <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{Request::root()}}/website/images/nav_icon.png" alt="" /> </a>
                         <ul class="nav" id="nav">
                             <li class="current"><a href="{{url('/home')}}">الرئيسية</a></li>
+                            <li class="current"><a href="{{url('/buildings')}}">العقارات</a></li>
                             <li><a href="about.html">من نحن</a></li>
                             <li><a href="services.html">خدماتنا</a></li>
                             <li><a href="contact.html">اتصل بنا </a></li>
