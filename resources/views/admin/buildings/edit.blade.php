@@ -77,6 +77,17 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <div class="col-md-6 {{ $errors->has('rooms') ? ' has-error' : '' }}">
+                                    {{Form::label('rooms', ' عدد الغرف ')}}
+                                    {!! Form::text('rooms', $building->rooms ,['class' => 'form-control']) !!}
+                                    @if ($errors->has('rooms'))
+                                        <span class="help-block">
+                                             <strong>{{ $errors->first('rooms') }}</strong>
+                                         </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <div class="col-md-6 {{ $errors->has('property') ? ' has-error' : '' }}">
                                     {{Form::label('property', ' نوع الملكية ')}}
                                     {!! Form::select('property', ['0' => 'ايجار', '1' => 'ملك'],$building->proberty,['class' => 'form-control']);!!}

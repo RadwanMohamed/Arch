@@ -47,6 +47,8 @@ Route::get("/buildings",'HomeBuildingController@allBuildings');
 Route::get("/buildings/possession/{type}",'HomeBuildingController@property');
 Route::get("/buildings/type/{type}",'HomeBuildingController@type');
 
+Route::get("/buildings/advanced/search",'HomeBuildingController@advancedSearch')->name('search');
+
 
 
 Auth::routes();

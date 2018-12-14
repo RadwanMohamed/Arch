@@ -130,6 +130,7 @@ class UserController extends Controller
             ->make(true);
 
     }
+
     protected function deleteRelation($user){
         if ($user::has('buildings'))
             $user->buildings()->delete();

@@ -36,7 +36,7 @@
                     <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{Request::root()}}/website/images/nav_icon.png" alt="" /> </a>
                         <ul class="nav" id="nav">
                             <li class="current"><a href="{{url('/home')}}">الرئيسية</a></li>
-                            <li class="current"><a href="{{url('/buildings')}}">العقارات</a></li>
+                            <li><a href="{{url('/buildings')}}">العقارات</a></li>
                             <li><a href="about.html">من نحن</a></li>
                             <li><a href="services.html">خدماتنا</a></li>
                             <li><a href="contact.html">اتصل بنا </a></li>
@@ -101,6 +101,8 @@
     {!! Html::script('website/js/bootstrap.min.js') !!}
     {!! Html::script('website/js/jquery.flexslider.js') !!}
     {!! Html::script('js/app.js') !!}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     @yield('footer')
 
 </body>

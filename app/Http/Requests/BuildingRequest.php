@@ -34,7 +34,8 @@ class BuildingRequest extends FormRequest
             'description'   => ['required', 'string'],
             'status'        => ['required', 'Boolean'],
             'user_id'       => ['integer'],
-            'type_id'       => ['required', 'integer']
+            'rooms'       => ['required', 'integer'],
+            'type_id'       => ['required', 'integer'],
         ];
     }
 }
