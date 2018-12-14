@@ -8,7 +8,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class HomeBuildingController extends Controller
+class HomeBuildingController extends SearchController
 {
 
 
@@ -18,27 +18,35 @@ class HomeBuildingController extends Controller
      * display all avialabe buildings
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function allBuildings()
+    public function allBuildings(AdvancedSearchRequest $request)
     {
-        // 40 / 45 /48
-        $buildings = Building::where('status',1)->paginate(9);
+        $query =  DB::table('buildings')->select('*')->where('status',1);
+        $this->priceSearch( $request->query('price') , $query);
+        $this->roomsSearch($request->query('rooms'),$query);
+        $buildings = $query->paginate(9);
         return view('website.buildings.all',compact('buildings'));
     }
+
+
     /**
      * @param $type
      * display all [rent | Ownership ] avialabe buildings
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function property($type)
+    public function property(AdvancedSearchRequest $request,$type)
     {
+
         if(!in_array($type,["0","1"]) )
             return redirect()->back();
 
-        $buildings = Building::where([
-                                         ['status', '=', '1'],
-                                         ['property', '=', "$type"]
-                                     ])->paginate(9);
+        $query =  DB::table('buildings')->select('*')
+                                              ->where([
+                                                        ['status', '=', '1'],
+                                                        ['property', '=', "$type"]] );
 
+        $this->priceSearch($request->query('price'),$query);
+        $this->roomsSearch($request->query('rooms'),$query);
+        $buildings = $query->paginate(9);
         return view('website.buildings.all',compact('buildings'));
     }
 
@@ -47,12 +55,17 @@ class HomeBuildingController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function type($id)
+    public function type(AdvancedSearchRequest $request,$id)
     {
-        $buildings = Building::where([
+        $price = $request->query('price');
+        $query = DB::table('buildings')->select('*')
+                                            ->where([
                                         ['status', '=', '1'],
-                                        ['type_id', '=', "$id"]
-                                    ])->paginate(9);
+                                        ['type_id', '=', "$id"]]);
+
+        $this->priceSearch($price,$query);
+        $this->roomsSearch($request->query('rooms'),$query);
+        $buildings = $query->paginate(9);
         return view('website.buildings.all',compact('buildings'));
     }
 
@@ -68,20 +81,7 @@ class HomeBuildingController extends Controller
         $query = DB::table('buildings')->select('*')
                 ->where('status','=',1);
 
-        foreach (array_except($request->all(),['_token','page']) as $key => $value)
-        {
-            if($request->$key != '' && $key != 'name')
-            {
-               $query->where($key,$value);
-            }
-            elseif ($key == 'name')
-            {
-                $query->where(function ($q) use ($key,$value){
-                    $q->where($key,'like','%'.$value.'%')->orWhere('description','like','%'.$value.'%');
-                });
-            }
-
-        }
+        $this->search($request,$query);
 
         $buildings = $query->paginate(9);
         return view('website.buildings.all',compact('buildings'));

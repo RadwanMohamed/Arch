@@ -27,6 +27,7 @@ class AdvancedSearchRequest extends FormRequest
             'name' => ['nullable','string', 'max:180'],
             'property' => ['nullable','Boolean'],
             'rooms' => ['nullable','integer'],
+            'price' => ['nullable','integer'],
             'type_id' => ['nullable','integer'],
         ];
     }

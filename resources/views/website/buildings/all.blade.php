@@ -222,18 +222,21 @@
                                         </div>
 
                                         <div class="quiz" id="quiz" data-toggle="buttons">
-                                            <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
-                                                    class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                                <input type="radio" name="q_answer" value="1">1 One</label>
-                                            <label class="element-animation2 btn btn-lg btn-primary btn-block"><span
-                                                    class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                                <input type="radio" name="q_answer" value="2">2 Two</label>
-                                            <label class="element-animation3 btn btn-lg btn-primary btn-block"><span
-                                                    class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                                <input type="radio" name="q_answer" value="3">3 Three</label>
-                                            <label class="element-animation4 btn btn-lg btn-primary btn-block"><span
-                                                    class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span>
-                                                <input type="radio" name="q_answer" value="4">4 Four</label>
+                                            @foreach(range(200,1000,200) as $range)
+                                                <label
+                                                    class="element-animation1 btn btn-lg btn-primary btn-block price-filter"
+                                                    href="">
+                                                <span class="btn-label">
+                                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                                </span>
+                                                    <input type="radio" name="price" class="price-input"
+                                                           value="{{$range}}">
+                                                    <center>
+                                                        {{($range == 1000)? '800 الف : مليون جنيه '  : ($range-200) . ' : ' . ($range) .'  الف  '   }}
+                                                    </center>
+                                                </label>
+                                            @endforeach
+
                                         </div>
                                     </div>
 
@@ -258,12 +261,18 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <div class="qty mt-5">
+
+
+                                        <div class="qty mt-5 rooms-no">
                                             <span class="plus bg-dark">+</span>
-
-                                            <input type="number" class="count" name="qty" value="1">
+                                            <input type="text" class="count" name="rooms-filter" value="1">
                                             <span class="minus bg-dark">-</span>
+                                        </div>
 
+                                        <div class="qty mt-5">
+                                            <button type="submit" class="btn btn-primary rooms-filter">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                            </button>
                                         </div>
 
                                     </td>
@@ -279,160 +288,120 @@
 
     </div>
 
+    <div class="buildings">
+        <div class="col-lg-9 pull-right">
+            @include('layouts.errors')
+            <div class="row request" style="display:block;">
+                @if(count($buildings) > 0)
+                    @foreach($buildings as $key => $building)
+                        @if($key%3 ==0 && $key !=0 )
+                            <div class="clearfix"></div>
 
+                        @endif
+                        <div class="col-sm-4">
+                            <article class="col-item">
 
-    <div class="col-lg-9 pull-right">
-        @include('layouts.errors')
-        <div class="row" style="display:block;">
-            @if(count($buildings) > 0)
-                @foreach($buildings as $key => $building)
-                    @if($key%3 ==0 && $key !=0 )
-                        <div class="clearfix"></div>
+                                <div class="photo">
+                                    <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive"
+                                                      alt="Product Image"/> </a>
+                                </div>
 
-                    @endif
-                    <div class="col-sm-4">
-                        <article class="col-item">
-
-                            <div class="photo">
-                                <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive"
-                                                  alt="Product Image"/> </a>
-                            </div>
-
-                            <div class="info">
-                                <div class="row">
-                                    <div class="price-details col-md-12">
-                                        <p class="details">
-                                            {{$building->desc}}
-                                        </p>
-                                        <h1>{{$building->name}} </h1>
-                                        <span class="price-new">${{$building->price}}</span>
+                                <div class="info">
+                                    <div class="row">
+                                        <div class="price-details col-md-12">
+                                            <p class="details">
+                                                {{$building->desc}}
+                                            </p>
+                                            <h1>{{$building->name}} </h1>
+                                            <span class="price-new">${{$building->price}}</span>
+                                        </div>
                                     </div>
+
+                                    <div class="separator clear-left">
+                                        <p>
+                                            <a href="#" class="hidden-sm"> اظهر التفاصيل </a>
+                                        </p>
+
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </article>
+                        </div>
+                    @endforeach
+
+                @else
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="error-template">
+                                <h1>
+                                    !Oops</h1>
+
+                                <div class="error-details">
+                                    نأسف لاخبارك ان هذا المنتج غير متاح حاليا!
                                 </div>
 
-                                <div class="separator clear-left">
-                                    <p>
-                                        <a href="#" class="hidden-sm"> اظهر التفاصيل </a>
-                                    </p>
-
-                                </div>
-                                <div class="clearfix"></div>
                             </div>
-                        </article>
-                    </div>
-                @endforeach
-
-            @else
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="error-template">
-                            <h1>
-                                !Oops</h1>
-
-                            <div class="error-details">
-                                نأسف لاخبارك ان هذا المنتج غير متاح حاليا!
-                            </div>
-
                         </div>
                     </div>
-                </div>
 
-            @endif
+                @endif
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="center-block">
+
+                {{$buildings->appends(Request::input())->links()}}
+            </div>
+
         </div>
     </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="center-block">
 
-            {{$buildings->appends(Request::input())->links()}}
-        </div>
 
-    </div>
+
 @endsection
 
+@section('footer')
+    <script>
+        $(document).on('click', '.price-filter', function () {
+            label = $(this);
+            var price = label.find('input:radio').val();
+            var currentUrl = window.location.href;
 
+            url = new URL(currentUrl);
 
-{{--<div class="col-sm-3">
-    <article class="col-item">
-        <div class="photo">
-            <div class="options">
-                <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Add to wish list">
-                    <i class="fa fa-heart"></i>
-                </button>
-                <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Compare">
-                    <i class="fa fa-exchange"></i>
-                </button>
-            </div>
-            <div class="options-cart">
-                <button class="btn btn-default" title="Add to cart">
-                    <span class="fa fa-shopping-cart"></span>
-                </button>
-            </div>
-            <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        </div>
-        <div class="info">
-            <div class="row">
-                <div class="price-details col-md-6">
-                    <p class="details">
-                        Lorem ipsum dolor sit amet, consectetur..
-                    </p>
-                    <h1>Sample Product</h1>
-                    <span class="price-new">$110.00</span>
-                </div>
-            </div>
-        </div>
-    </article>
-</div>
-<div class="col-sm-3">
-    <article class="col-item">
-        <div class="photo">
-            <div class="options-cart-round">
-                <button class="btn btn-default" title="Add to cart">
-                    <span class="fa fa-shopping-cart"></span>
-                </button>
-            </div>
-            <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-        </div>
-        <div class="info">
-            <div class="row">
-                <div class="price-details col-md-6">
-                    <p class="details">
-                        Lorem ipsum dolor sit amet, consectetur..
-                    </p>
-                    <h1>Sample Product</h1>
-                    <span class="price-new">$110.00</span>
-                </div>
-            </div>
-        </div>
-    </article>
-    <p class="text-center">Hover over image</p>
-</div>
+            var name = url.searchParams.get('name');
+            var type_id = url.searchParams.get('type_id');
+            var property = url.searchParams.get('property');
+            var rooms = url.searchParams.get('rooms');
+            url = currentUrl.includes("?") ? currentUrl.split('?')[0] + '/?price=' + price : currentUrl + '/?price=' + price;
+            if(url.includes('advanced/search'))
+                 url += '&name=' + name + '&type_id=' + type_id + '&property=' + property + '&rooms=' + rooms;
+            $(location).attr('href', url);
+        });
 
+    </script>
 
-            <div class="col-sm-3">
-                <article class="col-item">
-                    <div class="options">
-                        <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Add to wish list">
-                            <i class="fa fa-heart"></i>
-                        </button>
-                        <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top" title="Compare">
-                            <i class="fa fa-exchange"></i>
-                        </button>
-                    </div>
-                    <div class="photo">
-                        <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive" alt="Product Image" /> </a>
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price-details col-md-6">
-                                <p class="details">
-                                    Lorem ipsum dolor sit amet, consectetur..
-                                </p>
-                                <h1>Sample Product</h1>
-                                <span class="price-new">$110.00</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>--}}
+    <script>
+        $(document).on('click', '.rooms-filter', function (e) {
+            e.preventDefault();
+            var rooms = $('.rooms-no :input').val();
+            var currentUrl = window.location.href;
+            url = new URL(currentUrl);
+            var price = url.searchParams.get('price');
+            if(currentUrl.includes('advanced/search'))
+                url = currentUrl.includes("?price") ? currentUrl.split('advanced/search')[0] + '/?price=' + price +'&rooms='+rooms  : currentUrl.split('advanced/search')[0] + '?rooms=' + rooms;
+            else
+                url = currentUrl.includes("?price") ? currentUrl.split('?')[0] + '/?price=' + price +'&rooms='+rooms  :  currentUrl + '/?rooms=' + rooms;
 
+            // console.log(url);
+            $(location).attr('href', url);
 
+        });
+    </script>
+@endsection
+
+{{--
+gazel
+
+--}}
