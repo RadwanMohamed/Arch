@@ -52,11 +52,11 @@
             <span class="icon-bar"></span>
         </div>
         <div class="list-group">
-            <span href="#" class="list-group-item active" style="background-color: #2ABB9B">
-                <span class="pull-right">
+            <span href="#" class="list-group-item active" style="background-color: rgba(0,0,0,.03);">
+                <span class="pull-right" style="color: #1a2226">
                     تصفية النتائج
                 </span>
-                <span class="pull-left" id="slide-submenu">
+                <span class="pull-left" id="slide-submenu" style="color: #1a2226">
                     <i class="fa fa-times"></i>
                 </span>
             </span>
@@ -288,117 +288,15 @@
 
     </div>
 
-    <div class="buildings">
-        <div class="col-lg-9 pull-right">
-            @include('layouts.errors')
-            <div class="row request" style="display:block;">
-                @if(count($buildings) > 0)
-                    @foreach($buildings as $key => $building)
-                        @if($key%3 ==0 && $key !=0 )
-                            <div class="clearfix"></div>
-
-                        @endif
-                        <div class="col-sm-4">
-                            <article class="col-item">
-
-                                <div class="photo">
-                                    <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive"
-                                                      alt="Product Image"/> </a>
-                                </div>
-
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price-details col-md-12">
-                                            <p class="details">
-                                                {{$building->desc}}
-                                            </p>
-                                            <h1>{{$building->name}} </h1>
-                                            <span class="price-new">${{$building->price}}</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="separator clear-left">
-                                        <p>
-                                            <a href="#" class="hidden-sm"> اظهر التفاصيل </a>
-                                        </p>
-
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </article>
-                        </div>
-                    @endforeach
-
-                @else
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="error-template">
-                                <h1>
-                                    !Oops</h1>
-
-                                <div class="error-details">
-                                    نأسف لاخبارك ان هذا المنتج غير متاح حاليا!
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                @endif
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="center-block">
-
-                {{$buildings->appends(Request::input())->links()}}
-            </div>
-
-        </div>
-    </div>
+@yield('buildings')
 
 
 
 @endsection
 
 @section('footer')
-    <script>
-        $(document).on('click', '.price-filter', function () {
-            label = $(this);
-            var price = label.find('input:radio').val();
-            var currentUrl = window.location.href;
+    {!! Html::script('/customs/request.js') !!}
 
-            url = new URL(currentUrl);
-
-            var name = url.searchParams.get('name');
-            var type_id = url.searchParams.get('type_id');
-            var property = url.searchParams.get('property');
-            var rooms = url.searchParams.get('rooms');
-            url = currentUrl.includes("?") ? currentUrl.split('?')[0] + '/?price=' + price : currentUrl + '/?price=' + price;
-            if(url.includes('advanced/search'))
-                 url += '&name=' + name + '&type_id=' + type_id + '&property=' + property + '&rooms=' + rooms;
-            $(location).attr('href', url);
-        });
-
-    </script>
-
-    <script>
-        $(document).on('click', '.rooms-filter', function (e) {
-            e.preventDefault();
-            var rooms = $('.rooms-no :input').val();
-            var currentUrl = window.location.href;
-            url = new URL(currentUrl);
-            var price = url.searchParams.get('price');
-            if(currentUrl.includes('advanced/search'))
-                url = currentUrl.includes("?price") ? currentUrl.split('advanced/search')[0] + '/?price=' + price +'&rooms='+rooms  : currentUrl.split('advanced/search')[0] + '?rooms=' + rooms;
-            else
-                url = currentUrl.includes("?price") ? currentUrl.split('?')[0] + '/?price=' + price +'&rooms='+rooms  :  currentUrl + '/?rooms=' + rooms;
-
-            // console.log(url);
-            $(location).attr('href', url);
-
-        });
-    </script>
 @endsection
 
 {{--

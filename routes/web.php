@@ -13,11 +13,6 @@
 
 
 /**
- * User Routes
- */
-
-
-/**
  * Admin Routes
  */
 Route::group(['middleware'=>['admin','web']],function (){
@@ -42,8 +37,14 @@ Route::group(['middleware'=>['admin','web']],function (){
 });
 
 
+/**
+ * User Routes
+ */
+
+
 
 Route::get("/buildings/",'HomeBuildingController@allBuildings');
+Route::get("/buildings/{building}",'HomeBuildingController@show');
 Route::get("/buildings/possession/{type}/",'HomeBuildingController@property');
 Route::get("/buildings/type/{type}/",'HomeBuildingController@type');
 Route::get("/buildings/advanced/search/",'HomeBuildingController@advancedSearch')->name('search');

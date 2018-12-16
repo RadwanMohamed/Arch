@@ -1,3 +1,4 @@
+
 h4, h5, h6, h1, h2, h3 {
 	margin-top: 0;
 }
@@ -777,4 +778,8 @@ input.text {
     position: absolute;
     margin-top: 10px;
     margin-right: 239px;
+}
+body{
+    font-family: 'Amiri', serif !important;
+
 }

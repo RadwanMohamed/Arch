@@ -18,3 +18,10 @@ function typeCount($type='status',$value='1')
                              ["$type",'=',"$value"],
                           ])->count();
 }
+
+
+function propertyName($type)
+{
+    return $type == 0 ? ' ايجار '  :  ' تمليك ' ;
+}
+

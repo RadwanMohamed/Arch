@@ -37,34 +37,34 @@ class HomeBuildingController extends SearchController
      */
     public function allBuildings(AdvancedSearchRequest $request)
     {
-        $query =  DB::table('buildings')->select('*')->where('status',1);
-        $this->priceSearch( $request->query('price') , $query);
-        $this->roomsSearch($request->query('rooms'),$query);
+        $query = DB::table('buildings')->select('*')->where('status', 1);
+        $this->priceSearch($request->query('price'), $query);
+        $this->roomsSearch($request->query('rooms'), $query);
         $buildings = $query->paginate(9);
-        return view('website.buildings.all',compact('buildings'));
+        return view('website.buildings.buildings', compact('buildings'));
     }
 
 
     /**
-     * @param $type
      * display all [rent | Ownership ] avialabe buildings
+     * @param $type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function property(AdvancedSearchRequest $request,$type)
+    public function property(AdvancedSearchRequest $request, $type)
     {
 
-        if(!in_array($type,["0","1"]) )
+        if (!in_array($type, ["0", "1"]))
             return redirect()->back();
 
-        $query =  DB::table('buildings')->select('*')
-                                              ->where([
-                                                        ['status', '=', '1'],
-                                                        ['property', '=', "$type"]] );
+        $query = DB::table('buildings')->select('*')
+            ->where([
+                ['status', '=', '1'],
+                ['property', '=', "$type"]]);
 
-        $this->priceSearch($request->query('price'),$query);
-        $this->roomsSearch($request->query('rooms'),$query);
+        $this->priceSearch($request->query('price'), $query);
+        $this->roomsSearch($request->query('rooms'), $query);
         $buildings = $query->paginate(9);
-        return view('website.buildings.all',compact('buildings'));
+        return view('website.buildings.buildings', compact('buildings'));
     }
 
     /***
@@ -72,18 +72,18 @@ class HomeBuildingController extends SearchController
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function type(AdvancedSearchRequest $request,$id)
+    public function type(AdvancedSearchRequest $request, $id)
     {
         $price = $request->query('price');
         $query = DB::table('buildings')->select('*')
-                                            ->where([
-                                        ['status', '=', '1'],
-                                        ['type_id', '=', "$id"]]);
+            ->where([
+                ['status', '=', '1'],
+                ['type_id', '=', "$id"]]);
 
-        $this->priceSearch($price,$query);
-        $this->roomsSearch($request->query('rooms'),$query);
+        $this->priceSearch($price, $query);
+        $this->roomsSearch($request->query('rooms'), $query);
         $buildings = $query->paginate(9);
-        return view('website.buildings.all',compact('buildings'));
+        return view('website.buildings.buildings', compact('buildings'));
     }
 
 
@@ -96,16 +96,19 @@ class HomeBuildingController extends SearchController
     public function advancedSearch(AdvancedSearchRequest $request)
     {
         $query = DB::table('buildings')->select('*')
-                ->where('status','=',1);
+            ->where('status', '=', 1);
 
-        $this->search($request,$query);
+        $this->search($request, $query);
 
         $buildings = $query->paginate(9);
-        return view('website.buildings.all',compact('buildings'));
+        return view('website.buildings.buildings', compact('buildings'));
 
     }
 
 
-
+    public function show(Building $building)
+    {
+        return view('website.buildings.show', compact('building'));
+    }
 
 }

@@ -23,12 +23,12 @@
         {{ config('app.name', 'موقع العقارات') }} |
         @yield('title')
     </title>
-
+    <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
 
 
     @yield('header')
 </head>
-<body style="direction: rtl" lang="ar">
+<body style="direction: rtl" lang="ar" class="amiri">
     <div id="app">
         <nav class="">
             <div class="header">
