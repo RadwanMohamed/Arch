@@ -12,7 +12,24 @@ class HomeBuildingController extends SearchController
 {
 
 
-
+    /**
+     * 1- show building details
+     * 2- its map
+     * 3- buildings alike
+     * 4- add different types to  home navbar menu
+     * 5- home page + search
+     * 6- file upload for website and building with default image
+     * 7- main slider
+     * 8- arabic fonts
+     * 9- amazing product view css (product quick view) عرضاخر المشاريع ajax (l65)
+     *10- image intervension (l67)
+     *11- share page (add this )
+     *12- contact us
+     *13- edit admin panel notification
+     *14- user adds buildings
+     *15- activate building
+     *16- user control his own data and his buildings
+     */
 
     /**
      * display all avialabe buildings

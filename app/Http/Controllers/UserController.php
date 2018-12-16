@@ -131,6 +131,11 @@ class UserController extends Controller
 
     }
 
+    /**
+     * deletes user relation
+     * @param $user
+     */
+
     protected function deleteRelation($user){
         if ($user::has('buildings'))
             $user->buildings()->delete();

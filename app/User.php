@@ -27,6 +27,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * relation between user and buildings
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function buildings(){
         return $this->hasMany('App\Building');
     }

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    /**
+     * generate query to search using specefic key in database
+     * @param $request
+     * @param $query
+     */
     protected function search($request,$query)
     {
 
@@ -31,6 +36,11 @@ class SearchController extends Controller
         }
     }
 
+    /**
+     * searches for item using range of prices
+     * @param $price
+     * @param $query
+     */
     protected function priceSearch($price,$query)
     {
 
@@ -39,6 +49,10 @@ class SearchController extends Controller
 
     }
 
+    /**search for item by the number of its rooms
+     * @param $rooms
+     * @param $query
+     */
     protected function roomsSearch($rooms,$query)
     {
 
