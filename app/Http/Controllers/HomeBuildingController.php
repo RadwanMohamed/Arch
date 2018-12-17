@@ -7,30 +7,12 @@ use App\Http\Requests\AdvancedSearchRequest;
 use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\User;
 class HomeBuildingController extends SearchController
 {
 
 
-    /**
-     * 1- show building details
-     * 2- its map
-     * 3- buildings alike
-     * 4- add different types to  home navbar menu
-     * 5- home page + search
-     * 6- file upload for website and building with default image
-     * 7- main slider
-     * 8- arabic fonts
-     * 9- amazing product view css (product quick view) عرضاخر المشاريع ajax (l65)
-     *10- image intervension (l67)
-     *11- share page (add this )
-     *12- contact us
-     *13- edit admin panel notification
-     *14- user adds buildings
-     *15- activate building
-     *16- user control his own data and his buildings
-     */
-
+    
     /**
      * display all avialabe buildings
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -88,6 +70,28 @@ class HomeBuildingController extends SearchController
 
 
     /**
+     * return all buildings (owned by specific user) with specefic price or rooms
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+
+    public function userBuildings(AdvancedSearchRequest $request,User $user)
+    {
+        $query = DB::table('buildings')->select('*')
+            ->where([
+                ['status', '=', '1'],
+                ['user_id', '=', "$user->id"]]);
+        $this->priceSearch($request->query('price'), $query);
+        $this->roomsSearch($request->query('rooms'), $query);
+        $buildings = $query->paginate(9);
+
+//        $buildings = $user->buildings()->where('status',1)->paginate(9);
+
+        return view('website.buildings.buildings', compact('buildings'));
+    }
+
+    /**
      * display buildings accordin to some search param
      * @param AdvancedSearchRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -105,10 +109,16 @@ class HomeBuildingController extends SearchController
 
     }
 
-
+    /**
+     * @param Building $building
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Building $building)
     {
-        return view('website.buildings.show', compact('building'));
+       $sameBuildings = $building->user->buildings()->where('status',1)->inRandomOrder()->take(4)->get();
+        return view('website.buildings.show', compact('building','sameBuildings'));
     }
+
+
 
 }

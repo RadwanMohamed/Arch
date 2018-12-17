@@ -13,7 +13,8 @@
                                 <div class="card mb-10">
                                     <div class="card-header">
                                         <nav class="header-navigation">
-                                            <a href="{{url('/buildings/')}}" class="btn btn-link">الرجوع لجميع العقارات</a>
+                                            <a href="{{url('/buildings/')}}" class="btn btn-link">الرجوع لجميع
+                                                العقارات</a>
 
                                             <ol class="breadcrumb">
                                                 <li class="breadcrumb-item"><a href="{{url('/')}}">الرئيسية</a></li>
@@ -23,9 +24,14 @@
                                                         {{propertyName($building->property)}}
                                                     </a>
                                                 </li>
-                                                <li class="breadcrumb-item"><a href="{{route('search',['rooms'=>$building->rooms])}}">{{$building->rooms}} غرف</a></li>
-                                                <li class="breadcrumb-item"><a href="{{url('/buildings/type')}}/{{$building->type_id}}">{{$building->type->name}}</a></li>
-                                                <li class="breadcrumb-item active" aria-current="page">T-Shirts</li>
+                                                <li class="breadcrumb-item"><a
+                                                        href="{{route('search',['rooms'=>$building->rooms])}}">{{$building->rooms}}
+                                                        غرف</a></li>
+                                                <li class="breadcrumb-item"><a
+                                                        href="{{url('/buildings/type')}}/{{$building->type_id}}">{{$building->type->name}}</a>
+                                                </li>
+                                                <li class="breadcrumb-item active"
+                                                    aria-current="page">{{$building->name}}</li>
                                             </ol>
 
                                             <div class="btn-group">
@@ -65,23 +71,25 @@
                                         <div class="product-payment-details" style="height: 388px">
                                             <h2 class="mb-5 " style="margin-left: 50px"> المواصفات </h2>
                                             <dl class="mb-5">
-                                                <dd class="col-sm-7">200م</dd>
+                                                <dd class="col-sm-7">{{$building->square}} متر</dd>
                                                 <dt class="col-sm-3">المساحة</dt>
 
-                                                <dd class="col-sm-7">ايجار</dd>
+                                                <dd class="col-sm-7">{{propertyName($building->property)}}</dd>
                                                 <dt class="col-sm-3">الملكية</dt>
                                                 <br>
-                                                <dd class="col-sm-7">4 غرف</dd>
+                                                <dd class="col-sm-7">{{$building->rooms}} غرف</dd>
                                                 <dt class="col-sm-3">عدد الغرف</dt>
 
-                                                <dd class="col-sm-7">فيلا</dd>
+                                                <dd class="col-sm-7">{{$building->type->name}}</dd>
                                                 <dt class="col-sm-3">النوع</dt>
                                                 <br>
-                                                <dd class="col-sm-7">1000 جنيه</dd>
+                                                <dd class="col-sm-7">{{buildingPrice($building->price)}}  </dd>
                                                 <dt class="col-sm-3">السعر</dt>
                                                 <br>
-                                                <dd class="col-sm-7">2010/2016</dd>
-                                                <dt class="col-sm-3">تاريخ المنتج</dt>
+                                                <dd class="col-sm-7">{{$building->address}}</dd>
+                                                <dt class="col-sm-3">عنوان العقار </dt>
+                                                <dd class="col-sm-7">{{$building->created_at->diffForHumans()}}</dd>
+                                                <dt class="col-sm-3">تاريخ اضافة</dt>
                                                 <br>
                                             </dl>
                                         </div>
@@ -92,66 +100,45 @@
 
                                             <!-- /.recommended-items-->
                                             <div class="product-description mb-5">
-                                                <div class="col-lg-12">
-                                                    <h2 class="mb-5 pull-right">اسم العقار</h2>
+                                                <div class="col-lg-12 border-class">
+                                                    <h2 class="mb-5 pull-right">{{$building->name}}</h2>
 
                                                 </div>
 
-                                                <hr>
+                                                <p style="    text-align: justify;">
+                                                    {{$building->description}}
+                                                </p>
 
-                                                <p>شدّت الولايات جعل عن. عل بين أمام بالعمل, شيء منتصف استدعى أي, لمّ كثيرة يرتبط مقاومة ثم. دأبوا تجهيز مما أن. و العصبة العظمى التكاليف كان. مع حين حكومة حادثة الشهير.
 
-                                                    تم وصل قائمة الخاصّة. دنو ان أواخر ميناء. جهة بتخصيص وقدّموا الفرنسية هو. اعلان معزّزة اتفاقية جُل ما. بل أخرى مواقعها الأبرياء تعد.
-
-                                                    سابق وزارة و لها, بـ جنوب بهيئة الإمتعاض نفس. لان لم أحكم ا للحكومة, قد أضف وحتى اتفاق أصقاع, و أسر لكون حالية ضمنها. ضرب أم عقبت الضروري الشهيرة, قد عدم ماذا ايطاليا، الفرنسية, كل أضف معاملة الرئيسية. غريمه وأكثرها بعض ما. عدد في عملية علاقة التغييرات.
-
-                                                    أم غير وعلى الواقعة, حصدت المشتّتون بين قد, إيو في بشكل وسمّيت. لمّ بخطوط الوراء العاصمة إذ. كل يكن ليبين الصعداء, تاريخ بالحرب المؤلّفة مما هو. بل حاول اتفاقية التقليدية الى, تم هذه الخاسرة التخطيط, بل خيار جديدة الى. ما ذات بهيئة الأسيوي, قتيل، بتطويق المنتصر أم حتى.</p>
                                             </div>
 
-                                            <h3 class="mb-5">عرض المزيد من متجر احمد </h3>
-
+                                            <h3 class="mb-5">
+                                                عرض المزيد من عقارات
+                                                <a href="{{url('/user/' .$building->user->id  .'/buildings/')}}">{{$building->user->name}} </a>
+                                            </h3>
                                             <div class="recommended-items card-deck">
-                                                <div class="card">
-                                                    <img src="https://via.placeholder.com/157x157" alt=""
-                                                         class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">U$ 55.00</h5>
-                                                        <span class="text-muted"><small>  - الغرف -الملكية  - المساحة - النوع</small></span>
-                                                    </div>
-                                                </div>
+                                                @foreach($sameBuildings as $same)
+                                                    <div class="card">
+                                                        <img src="https://via.placeholder.com/157x157" alt=""
+                                                             class="card-img-top">
+                                                        <a href="{{url('/buildings/'.$same->id)}}" class="recommended-items-a">
 
-                                                <div class="card">
-                                                    <img src="https://via.placeholder.com/157x157" alt=""
-                                                         class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">U$ 55.00</h5>
-                                                        <span class="text-muted"><small>T-Shirt Size X - Large - Nickony Brand</small></span>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <img src="https://via.placeholder.com/157x157" alt=""
-                                                         class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">U$ 55.00</h5>
-                                                        <span class="text-muted"><small>T-Shirt Size X - Large - Nickony Brand</small></span>
-                                                    </div>
-                                                </div>
-                                                <div class="card">
-                                                    <img src="https://via.placeholder.com/157x157" alt=""
-                                                         class="card-img-top">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">U$ 55.00</h5>
-                                                        <span class="text-muted"><small>T-Shirt Size X - Large - Nickony Brand</small></span>
-                                                    </div>
-                                                </div>
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{$same->price}}</h5>
+                                                            <span class="text-muted"><small>   {{$same->rooms . ' غرف'}}  - {{propertyName($same->property)}}  - {{$same->square}} -  {{$same->type->name}}</small></span>
+                                                        </div>
+                                                        </a>
 
+                                                    </div>
+                                                @endforeach
                                             </div>
-                                            <p class="mb-5 mt-5"><a href="#">See all ads from this seller</a></p>
+                                            <p class="mb-5 mt-5"><a href="{{url('/user/' .$building->user->id  .'/buildings/')}}">See all
+                                                    ads from this seller</a></p>
 
                                         </div>
                                     </div>
-                                </div>
 
+                                 </div>
                             </div>
                         </div>
                     </article>

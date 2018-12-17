@@ -25,3 +25,8 @@ function propertyName($type)
     return $type == 0 ? ' ايجار '  :  ' تمليك ' ;
 }
 
+function buildingPrice($price)
+{
+    return $price >= 1000 ? ' مليون جنيه '  : $price. ' الف جنيه ' ;
+}
+

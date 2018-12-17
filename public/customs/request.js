@@ -1,3 +1,5 @@
+var pat = /buildings\/\d+/g;
+
 $(document).on('click', '.price-filter', function () {
     label = $(this);
     var price = label.find('input:radio').val();
@@ -8,18 +10,16 @@ $(document).on('click', '.price-filter', function () {
     var property = url.searchParams.get('property');
     var rooms = url.searchParams.get('rooms');
 
-    if(currentUrl.includes("?")){
-        url = currentUrl.split('?')[0] + '/?price=' + price;
-
-        if(url.includes('advanced/search'))
+    if(pat.test(currentUrl))
+    {
+        var regex = currentUrl.match(/buildings\/\d+/g);
+        url = currentUrl.replace(regex,'buildings/?price='+price);
+    }else {
+        url = currentUrl.includes("?") ? currentUrl.split('?')[0] + '/?price=' + price : currentUrl + '/?price=' + price;
+        if (url.includes('advanced/search'))
             url += '&name=' + name + '&type_id=' + type_id + '&property=' + property + '&rooms=' + rooms;
     }
-    else
-    {
-        url ='/buildings' + '/?price=' + price;
-    }
-    $(location).attr('href', url);
-
+       $(location).attr('href', url);
 
 });
 
@@ -33,6 +33,13 @@ $(document).on('click', '.rooms-filter', function (e) {
     if (currentUrl.includes('advanced/search'))
         url = currentUrl.includes("?price") ? currentUrl.split('advanced/search')[0] + '/?price=' + price + '&rooms=' + rooms : currentUrl.split('advanced/search')[0] + '?rooms=' + rooms;
     else
-        url = currentUrl.includes("?price") ? currentUrl.split('?')[0] + '/?price=' + price + '&rooms=' + rooms :  '/buildings/?rooms=' + rooms;
+    {
+        if(pat.test(currentUrl)) {
+            var regex = currentUrl.match(/buildings\/\d+/g);
+            url = currentUrl.replace(regex, 'buildings/?price=' + rooms);
+        }
+            url = currentUrl.includes("?price") ? currentUrl.split('?')[0] + '/?price=' + price + '&rooms=' + rooms :  '/buildings/?rooms=' + rooms;
+    }
     $(location).attr('href', url);
+
 });

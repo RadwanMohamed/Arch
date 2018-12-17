@@ -44,6 +44,7 @@ Route::group(['middleware'=>['admin','web']],function (){
 
 
 Route::get("/buildings/",'HomeBuildingController@allBuildings');
+Route::get("/user/{user}/buildings/",'HomeBuildingController@userBuildings');
 Route::get("/buildings/{building}",'HomeBuildingController@show');
 Route::get("/buildings/possession/{type}/",'HomeBuildingController@property');
 Route::get("/buildings/type/{type}/",'HomeBuildingController@type');
