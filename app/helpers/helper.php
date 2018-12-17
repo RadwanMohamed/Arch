@@ -10,6 +10,10 @@ function buildingTypes()
 {
     return App\Type::all();
 }
+function address()
+{
+    return App\Address::take(10)->get();
+}
 
 function typeCount($type='status',$value='1')
 {
@@ -27,6 +31,6 @@ function propertyName($type)
 
 function buildingPrice($price)
 {
-    return $price >= 1000 ? ' مليون جنيه '  : $price. ' الف جنيه ' ;
+    return $price >= 1000000 ? ' مليون جنيه '  : ($price/1000). ' الف جنيه ' ;
 }
 

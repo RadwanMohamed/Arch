@@ -51,6 +51,7 @@
                                 <th> المساحة </th>
                                 <th> نوع الملكية </th>
                                 <th> النوع </th>
+                                <th> المكان </th>
                                 <th> اسم المالك </th>
                                 <th> الحالة </th>
                                 <th> تاريخ الانشاء </th>
@@ -66,6 +67,7 @@
                                 <td>{{$building->square}}</td>
                                 <td>{{($building->property) ==0 ? ' ايجار '  : " ملك "}}</td>
                                 <td>{{$building->type->name}}</td>
+                                <td>{{$building->address->name}}</td>
                                 <td>{{$building->user->name}}</td>
                                 <td>{{($building->property) ==0 ? ' متاح '  : " غير متاح "}}</td>
                                 <td>{{$building->created_at}}</td>

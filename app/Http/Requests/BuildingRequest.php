@@ -30,7 +30,7 @@ class BuildingRequest extends FormRequest
             'property'      => ['required', 'Boolean'],
             'desc'          => ['required', 'string', 'max:160'],
             'meta'          => ['required', 'string'],
-            'address'       => ['required', 'alpha_dash'],
+            'address_id'       => ['required', 'integer'],
             'description'   => ['required', 'string'],
             'status'        => ['required', 'Boolean'],
             'user_id'       => ['integer'],

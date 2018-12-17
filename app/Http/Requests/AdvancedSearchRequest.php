@@ -29,6 +29,10 @@ class AdvancedSearchRequest extends FormRequest
             'rooms' => ['nullable','integer'],
             'price' => ['nullable','integer'],
             'type_id' => ['nullable','integer'],
+            'min' => ['nullable','integer'],
+            'max' => ['nullable','integer'],
+            'address' => ['nullable','integer'],
+            'square' => ['nullable','integer'],
         ];
     }
 }

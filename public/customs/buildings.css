@@ -807,3 +807,6 @@ input:disabled{
 .recommended-items-a{
     /*margin-left: 10px;*/
 }
+.separation{
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}

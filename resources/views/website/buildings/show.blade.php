@@ -132,8 +132,37 @@
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <p class="mb-5 mt-5"><a href="{{url('/user/' .$building->user->id  .'/buildings/')}}">See all
-                                                    ads from this seller</a></p>
+                                            <div class="separation">
+                                            <p class="mb-5 mt-5"><a href="{{url('/user/' .$building->user->id  .'/buildings/')}}">
+                                                   {{$building->user->name}} عرض جميع عقارات
+                                                </a></p>
+                                            </div>
+
+                                            <h3 class="mb-5">
+                                                عقارات اخري قد تهمك
+                                            </h3>
+                                            <div class="recommended-items card-deck">
+                                                @foreach($sametype as $type)
+                                                    <div class="card">
+                                                        <img src="https://via.placeholder.com/157x157" alt=""
+                                                             class="card-img-top">
+                                                        <a href="{{url('/buildings/'.$type->id)}}" class="recommended-items-a">
+
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{$type->price}}</h5>
+                                                            <span class="text-muted"><small>   {{$type->rooms . ' غرف'}}  - {{propertyName($type->property)}}  - {{$type->square}} -  {{$type->type->name}}</small></span>
+                                                        </div>
+                                                        </a>
+
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="separation">
+                                            <p class="mb-5 mt-5"><a href="{{url('/buildings/type')}}/{{$type->type_id}}">
+                                                    عرض جميع العقارات من هذا النوع
+                                                </a></p>
+                                            </div>
+
 
                                         </div>
                                     </div>

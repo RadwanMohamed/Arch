@@ -21,14 +21,16 @@ class CreateBuildingsTable extends Migration
             $table->boolean('property');
             $table->string('desc');
             $table->string('meta');
-            $table->string('address')->nullable();
             $table->text('description');
             $table->boolean('status');
             $table->integer('rooms');
             $table->integer('user_id')->unsigned();
             $table->integer('type_id')->unsigned();
+            $table->integer('address_id')->unsigned();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
             $table->timestamps();
         });
     }

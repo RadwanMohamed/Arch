@@ -30,10 +30,116 @@
     <div class="banner text-center">
         <div class="container">
             <div class="banner-info">
-                <h1>Lorem ipsum dolor sit amet</h1>
-                <p>Lorem ipsum dolor sit amet, facilisis egestas sodales non luctus,<br>
-                    sem quas potenti malesuada vel phasellus.</p>
-                <a class="banner_btn" href="about.html">Read More</a> </div>
+                <h1> ابحث معنا عن عقار مناسب لك </h1>
+                <div id="collapse1" class="collapse show">
+                    <form  role="form" action="{{route('search')}}" method="get" class="form">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-4">
+                                <div class="form-group">
+                                    {{--<label class="control-label">Last Name</label>--}}
+                                    <input type="text" class="form-control"  placeholder="اسم العقار" name="name" />
+                                </div>
+
+                            </div>
+                            <div class="col-md-1 col-lg-4">
+                                <div class="form-group">
+                                    {{--<label class="control-label">نوع العقار</label>--}}
+                                    {{--<input type="text" class="form-control" />--}}
+                                    <select class="form-control" name="type_id">
+                                        <option value=""> نوع العقار</option>
+                                        @foreach(buildingTypes() as $type)
+
+                                            <option
+                                                value="{{$type->id}}">{{$type->name}}</option>
+
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-lg-1">
+                                <div class="form-group">
+                                    {{--<label class="control-label">Middle.I</label>--}}
+                                    <input class="form-control" type="text" placeholder="المساحة" name="square" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 col-lg-3">
+                                <div class="form-group">
+                                    {{--<label class="control-label">Date Of Birth</label>--}}
+                                    {{--<div class="input-group date">--}}
+                                        {{--<input class="form-control" type="text" />--}}
+                                        {{--<span class="input-group-append">--}}
+                                    {{--<button class="btn btn-outline-secondary" type="button">--}}
+                                        {{--<i class="fa fa-calendar"></i>--}}
+                                    {{--</button></span>--}}
+                                    {{--</div>--}}
+                                    <select class="form-control select2" name="address">
+                                        <option value=""> مكان العقار</option>
+                                        @foreach(address() as $address)
+
+                                            <option value="{{$address->id}}">{{$address->name}}</option>
+
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: -24px">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="form-group home-search-input">
+                                    {{--<label class="control-label">Mailing Address</label>--}}
+                                    {{--<input type="text" class="form-control" />--}}
+                                    <select class="form-control" name="property">
+                                        <option value=""> نوع الملكية  </option>
+
+                                        <option value="0"> ايجار</option>
+                                        <option value="1"> تمليك</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-lg-3">
+                                <div class="form-group home-search-input">
+                                    {{--<label class="control-label">City</label>--}}
+                                    <input type="text" class="form-control" placeholder="  اقل قيمة للسعر " name="min" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-lg-3">
+                                <div class="form-group home-search-input">
+                                    {{--<label class="control-label">State</label>--}}
+                                    <input type="text" class="form-control" placeholder=" اقصى قيمة للسعر " name="max" />
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 col-lg-2">
+                                <div class="form-group home-search-input">
+                                    {{--<label class="control-label">Zip Code</label>--}}
+                                    <input type="text" class="form-control" placeholder=" عدد الغرف " name="rooms" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 col-lg-12">
+                                <div class="form-group">
+                                    {{--<label class="control-label">High School College/Name</label>--}}
+                                    <button  class="form-control btn btn-primary" >
+                                        ابحث الان
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+                <a class="banner_btn" href="about.html"> اضف عقارك </a>
+            </div>
         </div>
     </div>
     <div class="main">
@@ -182,4 +288,15 @@
 
 @endsection
 
+@section('footer')
+    {!! Html::style("website/css/select2.min.css") !!}
+    {!! Html::script("website/js/select2.min.js") !!}
 
+    <script>
+
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+
+@endsection

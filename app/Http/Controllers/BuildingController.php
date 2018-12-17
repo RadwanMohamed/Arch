@@ -19,6 +19,9 @@ class BuildingController extends Controller
     public function index()
     {
         $buildings = Building::all();
+//        foreach ($buildings as $b){
+//            dd($b->address);
+//        }
         return view('admin.buildings.index',compact('buildings'));
 
     }
@@ -50,7 +53,8 @@ class BuildingController extends Controller
             'property'      => $request->property,
             'desc'          => $request->desc,
             'meta'          => $request->meta,
-            'address'       => $request->address,
+            'address_id'       => $request->address_id,
+            'rooms'       => $request->rooms,
             'description'   => $request->description,
             'status'        => $request->status,
             'user_id'       => Auth::id(),

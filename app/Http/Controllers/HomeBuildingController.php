@@ -12,7 +12,6 @@ class HomeBuildingController extends SearchController
 {
 
 
-    
     /**
      * display all avialabe buildings
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -91,6 +90,25 @@ class HomeBuildingController extends SearchController
         return view('website.buildings.buildings', compact('buildings'));
     }
 
+
+
+
+
+
+
+    /**
+     * @param Building $building
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show(Building $building)
+    {
+       $sametype      = $building->type->buildings()->where('status',1)->inRandomOrder()->take(4)->get();
+       $sameBuildings = $building->user->buildings()->where('status',1)->inRandomOrder()->take(4)->get();
+        return view('website.buildings.show', compact('building','sameBuildings','sametype'));
+    }
+
+
+
     /**
      * display buildings accordin to some search param
      * @param AdvancedSearchRequest $request
@@ -99,6 +117,8 @@ class HomeBuildingController extends SearchController
 
     public function advancedSearch(AdvancedSearchRequest $request)
     {
+
+//       dd($request->all());
         $query = DB::table('buildings')->select('*')
             ->where('status', '=', 1);
 
@@ -108,17 +128,6 @@ class HomeBuildingController extends SearchController
         return view('website.buildings.buildings', compact('buildings'));
 
     }
-
-    /**
-     * @param Building $building
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show(Building $building)
-    {
-       $sameBuildings = $building->user->buildings()->where('status',1)->inRandomOrder()->take(4)->get();
-        return view('website.buildings.show', compact('building','sameBuildings'));
-    }
-
 
 
 }

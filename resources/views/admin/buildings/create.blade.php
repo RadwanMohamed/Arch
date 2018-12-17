@@ -126,8 +126,15 @@
 
                             <div class="form-group row">
                                 <div class="col-md-6 {{ $errors->has('address') ? ' has-error' : '' }}">
-                                    {{Form::label('address', ' عنوان العقار بالتفصيل ')}}
-                                    {!! Form::text('address', null ,['class' => 'form-control']) !!}
+                                    {{Form::label('address', ' عنوان العقار  ')}}
+                                    {{--{!! Form::text('address', null ,['class' => 'form-control']) !!}--}}
+                                    <select  class="form-control" name="address_id">
+                                        @foreach(address() as $address)
+                                            <option value="{{$address->id}}">
+                                                {{$address->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                              <strong>{{ $errors->first('address') }}</strong>
@@ -141,7 +148,7 @@
                                 <div class="col-md-6 {{ $errors->has('description') ? ' has-error' : '' }}">
                                     {{--<input id="name" placeholder="الاسم" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
                                     {{Form::label('description', ' الوصف التفصيلى  ')}}
-                                    {!! Form::text('description', null ,['class' => 'form-control']) !!}
+                                    {!! Form::textarea('description', null ,['class' => 'form-control']) !!}
                                     @if ($errors->has('description'))
                                         <span class="help-block">
                                              <strong>{{ $errors->first('description') }}</strong>

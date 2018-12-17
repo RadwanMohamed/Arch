@@ -115,7 +115,7 @@
                                             <div class="input-group" id="adv-search">
 
                                                 <input type="text" class="form-control search-input"
-                                                       placeholder="Search for snippets" name="name"/>
+                                                       placeholder="اسم العقار" name="name"/>
 
                                                 <div class="input-group-btn">
                                                     <div class="btn-group" role="group">
@@ -221,7 +221,7 @@
                                         </div>
 
                                         <div class="quiz" id="quiz" data-toggle="buttons">
-                                            @foreach(range(200,1000,200) as $range)
+                                            @foreach(range(200000,1000000,200000) as $range)
                                                 <label
                                                     class="element-animation1 btn btn-lg btn-primary btn-block price-filter"
                                                     href="">
@@ -231,7 +231,7 @@
                                                     <input type="radio" name="price" class="price-input"
                                                            value="{{$range}}">
                                                     <center>
-                                                        {{($range == 1000)? '800 الف : مليون جنيه '  : ($range-200) . ' : ' . ($range) .'  الف  '   }}
+                                                        {{($range == 1000000)? '800 الف : مليون جنيه '  : ($range/1000-200) . ' : ' . ($range/1000) .'  الف  '   }}
                                                     </center>
                                                 </label>
                                             @endforeach

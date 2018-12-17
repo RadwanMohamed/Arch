@@ -6,16 +6,30 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    private  $price = [];
     /**
      * generate query to search using specefic key in database
      * @param $request
      * @param $query
      */
+
+    /**
+     * $min =  " " & max = " "
+     * $min = "gg" & max = "  "
+     * $min = " " & max = "jff"
+     * $min = "gg"  & max = "ffg"
+     */
     protected function search($request,$query)
     {
 
+
         foreach (array_except($request->all(),['_token','page']) as $key => $value)
         {
+            if($key == 'min' || $key == 'max')
+            {
+                $this->price[$key] = ($value== '') ? 0 : (int)$value  ;
+                continue;
+            }
             if($request->$key == '')
                 continue;
             if( $key != 'name' && $key != 'price' )
@@ -34,6 +48,19 @@ class SearchController extends Controller
             }
 
         }
+        $this->priceRange($query);
+
+    }
+
+    /**
+     * search for buildings in range of prices tha user can enter
+     * @param $query
+     */
+    private function priceRange($query)
+    {
+        if(isset($this->price['max']))
+            ($this->price['max'] == 0)? $query->where('price','>',$this->price['min']) : $query->whereBetween('price', [$this->price['min'], $this->price['max']]);
+
     }
 
     /**
@@ -45,7 +72,7 @@ class SearchController extends Controller
     {
 
         if ($price != null )
-            $query->whereBetween('price',[$price-200,$price]);
+            $query->whereBetween('price',[$price-200000,$price]);
 
     }
 
@@ -61,5 +88,6 @@ class SearchController extends Controller
 
 
     }
+
 
 }

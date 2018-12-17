@@ -13,6 +13,7 @@
     {!! Html::style('website/css/style.css') !!}
     {!! Html::style('website/css/font-awesome.min.css') !!}
     {!! Html::script('website/js/jquery.min.js') !!}
+
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
 
@@ -36,7 +37,41 @@
                     <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{Request::root()}}/website/images/nav_icon.png" alt="" /> </a>
                         <ul class="nav" id="nav">
                             <li class="current"><a href="{{url('/home')}}">الرئيسية</a></li>
-                            <li><a href="{{url('/buildings')}}">العقارات</a></li>
+
+
+
+                            <li >
+                                <a  class="nav-link dropdown-toggle" href="{{url('/buildings')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    العقارات
+                                </a>
+
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{url('/buildings')}}">
+                                        كل العقارات المتاحة
+
+                                    </a>
+
+                                    @foreach(buildingTypes() as $type)
+                                    <a class="dropdown-item" href="{{url('/buildings/type/'.$type->id)}}">
+                                        {{$type->name}}
+
+                                    </a>
+                                    @endforeach
+                                    <a class="dropdown-item" href="{{url('/buildings/possession/0')}}">
+                                        ايجار
+
+                                    </a>
+                                    <a class="dropdown-item" href="{{url('/buildings/possession/1')}}">
+                                        تمليك
+
+                                    </a>
+                                </div>
+
+
+
+                            </li>
+
                             <li><a href="about.html">من نحن</a></li>
                             <li><a href="services.html">خدماتنا</a></li>
                             <li><a href="contact.html">اتصل بنا </a></li>

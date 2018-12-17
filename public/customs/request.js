@@ -16,12 +16,14 @@ $(document).on('click', '.price-filter', function () {
         url = currentUrl.replace(regex,'buildings/?price='+price);
     }else {
         url = currentUrl.includes("?") ? currentUrl.split('?')[0] + '/?price=' + price : currentUrl + '/?price=' + price;
-        if (url.includes('advanced/search'))
+
+        if (url.includes('advanced/search') && ! url.includes('min=') )
             url += '&name=' + name + '&type_id=' + type_id + '&property=' + property + '&rooms=' + rooms;
     }
        $(location).attr('href', url);
 
 });
+
 
 $(document).on('click', '.rooms-filter', function (e) {
     e.preventDefault();

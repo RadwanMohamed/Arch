@@ -121,10 +121,18 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group row">
                                 <div class="col-md-6 {{ $errors->has('address') ? ' has-error' : '' }}">
-                                    {{Form::label('address', 'عنوان العقار بالتفصيل')}}
-                                    {!! Form::text('address', $building->address ,['class' => 'form-control']) !!}
+                                    {{Form::label('address', ' عنوان العقار  ')}}
+                                    {{--{!! Form::text('address', null ,['class' => 'form-control']) !!}--}}
+                                    <select  class="form-control" name="address_id">
+                                        @foreach(address() as $address)
+                                            <option value="{{$address->id}}">
+                                                {{$address->name}}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('address'))
                                         <span class="help-block">
                                              <strong>{{ $errors->first('address') }}</strong>
