@@ -86,7 +86,7 @@
                                                 <dd class="col-sm-7">{{buildingPrice($building->price)}}  </dd>
                                                 <dt class="col-sm-3">السعر</dt>
                                                 <br>
-                                                <dd class="col-sm-7">{{$building->address}}</dd>
+                                                <dd class="col-sm-7">{{$building->address->name}}</dd>
                                                 <dt class="col-sm-3">عنوان العقار </dt>
                                                 <dd class="col-sm-7">{{$building->created_at->diffForHumans()}}</dd>
                                                 <dt class="col-sm-3">تاريخ اضافة</dt>

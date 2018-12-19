@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
 use App\Building;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Type;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 class HomeBuildingController extends SearchController
 {
+
+
 
 
     /**
@@ -117,8 +120,6 @@ class HomeBuildingController extends SearchController
 
     public function advancedSearch(AdvancedSearchRequest $request)
     {
-
-//       dd($request->all());
         $query = DB::table('buildings')->select('*')
             ->where('status', '=', 1);
 

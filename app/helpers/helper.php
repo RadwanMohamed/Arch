@@ -10,10 +10,6 @@ function buildingTypes()
 {
     return App\Type::all();
 }
-function address()
-{
-    return App\Address::take(10)->get();
-}
 
 function typeCount($type='status',$value='1')
 {

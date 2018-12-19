@@ -75,13 +75,13 @@
                                         {{--<i class="fa fa-calendar"></i>--}}
                                     {{--</button></span>--}}
                                     {{--</div>--}}
-                                    <select class="form-control select2" name="address">
+                                    <select class="form-control select2" name="address_id">
                                         <option value=""> مكان العقار</option>
-                                        @foreach(address() as $address)
+                                        {{--@foreach(address() as $address)--}}
 
-                                            <option value="{{$address->id}}">{{$address->name}}</option>
+                                            {{--<option value="{{$address->id}}">{{$address->name}}</option>--}}
 
-                                        @endforeach
+                                        {{--@endforeach--}}
 
                                     </select>
                                 </div>
@@ -294,9 +294,23 @@
 
     <script>
 
-        $(document).ready(function() {
-            $('.select2').select2();
+
+
+        $('.select2').select2({
+            placeholder: 'مكان العقار',
+            ajax: {
+                url: '/countries',
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
         });
+
     </script>
 
 @endsection
