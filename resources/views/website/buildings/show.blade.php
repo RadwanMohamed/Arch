@@ -123,7 +123,7 @@
                                             <div class="recommended-items card-deck">
                                                 @foreach($sameBuildings as $same)
                                                     <div class="card">
-                                                        <img src="https://via.placeholder.com/157x157" alt=""
+                                                        <img src="{{Request::root()}}/{{$same->images[0]->image_url}}" alt=""
                                                              class="card-img-top">
                                                         <a href="{{url('/buildings/'.$same->id)}}" class="recommended-items-a">
 
@@ -148,7 +148,7 @@
                                             <div class="recommended-items card-deck">
                                                 @foreach($sametype as $type)
                                                     <div class="card">
-                                                        <img src="https://via.placeholder.com/157x157" alt=""
+                                                        <img src="{{Request::root()}}/{{$type->images[0]->image_url}}" alt=""
                                                              class="card-img-top">
                                                         <a href="{{url('/buildings/'.$type->id)}}" class="recommended-items-a">
 
