@@ -28,14 +28,16 @@ class BuildingRequest extends FormRequest
             'price'         => ['required', 'numeric'],
             'square'        => ['required', 'numeric'],
             'property'      => ['required', 'Boolean'],
-            'desc'          => ['required', 'string', 'max:160'],
+            'desc'          => ['required', 'string','min:100' ,'max:160'],
             'meta'          => ['required', 'string'],
             'address_id'       => ['required', 'integer'],
-            'description'   => ['required', 'string'],
+            'description'   => ['required', 'string','min:100'],
             'status'        => ['required', 'Boolean'],
             'user_id'       => ['integer'],
             'rooms'       => ['required', 'integer'],
             'type_id'       => ['required', 'integer'],
+            'images' => ['required'],
+            'images.*' => ['required','mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=400,min_height=450'],
         ];
     }
 }

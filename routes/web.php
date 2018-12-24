@@ -29,9 +29,14 @@ Route::group(['middleware'=>['admin','web']],function (){
 
     Route::get('admin-panel/site/settings','SiteSettingController@index');
     Route::put('admin-panel/site/settings','SiteSettingController@update');
+    Route::get('admin-panel/site/settings/slider','SiteSettingController@slider');
+    Route::post('admin-panel/site/settings/slider','SiteSettingController@updateSlider');
+    Route::post('admin-panel/site/settings/slider/restore','SiteSettingController@sliderRestore');
 
 
+    Route::get('/admin-panel/buildings/mybuildings',"BuildingController@myBuildings");
     Route::resource('/admin-panel/buildings',"BuildingController")->except('show');
+    Route::resource('/admin-panel/buildings.images',"BuildingImagesController")->except('show');
 
 
 });

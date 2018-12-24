@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>
         لوحة التحكم  |
         @yield('title')
@@ -572,13 +574,14 @@
 
 <!-- jQuery 3.1.1 -->
 {!! Html::script('admin/plugins/jQuery/jquery-3.1.1.min.js') !!}
-
 <!-- jQuery UI 1.11.4 -->
+
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-    $.widget.bridge('uibutton', $.ui.button);
+$.widget.bridge('uibutton', $.ui.button);
 </script>
+
 
 <!-- Bootstrap 3.3.7 -->
 {!! Html::script('admin/bootstrap/js/bootstrap.min.js') !!}

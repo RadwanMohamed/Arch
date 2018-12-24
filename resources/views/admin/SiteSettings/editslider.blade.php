@@ -39,40 +39,52 @@
                 @endif
                 <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{route('settings.update')}}" method="post">
+
+                        <form action="{{url('admin-panel/site/settings/slider')}}" method="post" class="settingEdit" enctype="multipart/form-data" >
+                            <div id="editformresults"></div>
                             @csrf
-                            {{method_field("PUT")}}
-                            @foreach($siteSettings as $setting)
+
                                 <div class="form-group row">
 
-                                    <div class="col-md-6 {{ $errors->has($setting->name) ? ' has-error' : '' }}">
+                                    <div class="col-md-6 {{ $errors->has('image') ? ' has-error' : '' }}">
                                         {{--<input id="name" placeholder="الاسم" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
 
-                                        {!! Form::label('name',$setting->slug )!!}
-                                        @if($setting->type == 0)
-                                            {!! Form::text($setting->name,$setting->value,['class' => 'form-control']) !!}
-                                        @else
-                                            {!! Form::Textarea($setting->name,$setting->value,['class' => 'form-control']) !!}
-                                        @endif
-                                        @if ($errors->has($setting->name))
+                                        {!! Form::label('name',' صورة السليدر (يجب ان يكون طول الصورة 500  وعرضها 1600بيكسل) ' )!!}
+
+                                            {!! Form::file('image',['class' => 'form-control']) !!}
+
+                                        @if ($errors->has('image'))
                                             <span class="help-block">
-                                            <strong>{{ $errors->first($setting->name) }}</strong>
+                                            <strong>{{ $errors->first('image') }}</strong>
                                        </span>
                                         @endif
                                     </div>
                                 </div>
-                            @endforeach
-                            <input type="hidden" value="{{$setting->id}}" name="id" readonly >
+
 
 
                             <div class="form-group row mb-2">
                                 <div class="col-md-1 ">
-                                    <button type="submit" class="btn btn-success">
-                                        تسجيل عضو
+                                    <button type="submit" class="btn btn-success save">
+                                        تعديل الاعدادات
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                        @if(hasSlider() != false)
+                        <hr>
+                        <form action="{{url('admin-panel/site/settings/slider/restore')}}" method="post">
+                            @csrf
+                            <div class="form-group row mb-2">
+                                <div class="col-md-1 ">
+                                    <button type="submit" class="btn btn-danger">
+                                    اعادة السليدر الاصلي
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        @endif
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -83,5 +95,6 @@
         <!-- /.row -->
     </section>
 @endsection
+
 
 

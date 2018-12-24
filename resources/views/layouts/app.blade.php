@@ -139,6 +139,12 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @yield('footer')
+<script>
+    $(document).ready(function () {
+        $('.banner').css('background',"url({{ getSlider()}}) no-repeat center")
+    });
+
+</script>
 
 </body>
 </html>

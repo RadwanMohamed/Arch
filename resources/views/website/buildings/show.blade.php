@@ -44,24 +44,28 @@
                                     <div class="card-body store-body">
 
                                         <div class="product-info">
+
                                             <div class="product-gallery">
                                                 <div class="product-gallery-featured">
-                                                    <img src="https://via.placeholder.com/350x350/ffcf5b" alt="">
+                                                    <img src="{{Request::root()}}/{{$building->images[0]->image_url}}" alt="">
+                                                    {{--<img src="https://via.placeholder.com/350x350/ffcf5b" alt="">--}}
                                                 </div>
 
                                                 <div class="product-gallery-thumbnails"
                                                      style="margin-top: 10px; margin-left: 3px;">
                                                     <ol class="thumbnails-list list-unstyled">
-                                                        <li><img src="https://via.placeholder.com/350x350/ffcf5b"
+                                                        @foreach($building->images as $image)
+                                                        <li><img src="{{Request::root()}}/{{$image->image_url}}"
                                                                  alt=""></li>
-                                                        <li><img src="https://via.placeholder.com/350x350/f16a22"
-                                                                 alt=""></li>
-                                                        <li><img src="https://via.placeholder.com/350x350/d3ffce"
-                                                                 alt=""></li>
-                                                        <li><img src="https://via.placeholder.com/350x350/7937fc"
-                                                                 alt=""></li>
-                                                        <li><img src="https://via.placeholder.com/350x350/930000"
-                                                                 alt=""></li>
+                                                        @endforeach
+                                                        {{--<li><img src="https://via.placeholder.com/350x350/f16a22"--}}
+                                                                 {{--alt=""></li>--}}
+                                                        {{--<li><img src="https://via.placeholder.com/350x350/d3ffce"--}}
+                                                                 {{--alt=""></li>--}}
+                                                        {{--<li><img src="https://via.placeholder.com/350x350/7937fc"--}}
+                                                                 {{--alt=""></li>--}}
+                                                        {{--<li><img src="https://via.placeholder.com/350x350/930000"--}}
+                                                                 {{--alt=""></li>--}}
                                                     </ol>
                                                 </div>
                                             </div>

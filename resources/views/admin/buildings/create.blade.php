@@ -1,6 +1,4 @@
 @extends('admin.layouts.app')
-
-
 @section('title')
     اضافة عقار
 @endsection
@@ -37,7 +35,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form method="POST" action="{{ route('buildings.store') }}">
+                        <form method="POST" action="{{ route('buildings.store') }}" enctype="multipart/form-data">
                             @csrf
                             {{--'name', 'price', 'square', 'property', 'desc', 'meta', 'address', 'latitude', 'description', 'status', 'user_id', 'type_id'--}}
 
@@ -125,19 +123,15 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-md-6 {{ $errors->has('address') ? ' has-error' : '' }}">
+                                <div class="col-md-6 {{ $errors->has('address_id') ? ' has-error' : '' }}">
                                     {{Form::label('address', ' عنوان العقار  ')}}
                                     {{--{!! Form::text('address', null ,['class' => 'form-control']) !!}--}}
-                                    <select  class="form-control" name="address_id">
-                                        @foreach(address() as $address)
-                                            <option value="{{$address->id}}">
-                                                {{$address->name}}
-                                            </option>
-                                        @endforeach
+                                    <select  class="form-control select" name="address_id" >
+
                                     </select>
-                                    @if ($errors->has('address'))
+                                    @if ($errors->has('address_id'))
                                         <span class="help-block">
-                                             <strong>{{ $errors->first('address') }}</strong>
+                                             <strong>{{ $errors->first('address_id') }}</strong>
                                          </span>
                                     @endif
                                 </div>
@@ -187,6 +181,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <div class="col-md-6 {{ $errors->has('images.*') ? ' has-error' : '' }}">
+                                    {{Form::label('images', ' صور العقار  ')}}
+                                   <input type="file" multiple name="images[]" placeholder="اضف صور للعقار"class="form-control">
+
+                                    @if ($errors->has('images.*'))
+                                        <span class="help-block">
+
+                                            <strong>
+                                                 {{ $errors->first('images.0') }}
+                                             </strong>
+
+                                         </span>
+                                    @endif
+                                </div>
+                            </div>
+
+
 
 
                             <div class="form-group row mb-2">
@@ -213,3 +225,30 @@
 
 
 
+@section('footer')
+    {!! Html::style("website/css/select2.min.css") !!}
+    {!! Html::script("website/js/select2.min.js") !!}
+
+    <script>
+
+
+
+        $('.select').select2({
+            placeholder: 'مكان العقار',
+            ajax: {
+                url: '/countries',
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+
+        });
+
+    </script>
+
+@endsection

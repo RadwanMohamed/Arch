@@ -30,3 +30,23 @@ function buildingPrice($price)
     return $price >= 1000000 ? ' مليون جنيه '  : ($price/1000). ' الف جنيه ' ;
 }
 
+function getSlider()
+{
+        $slider = hasSlider();
+        if ( $slider == false )
+            return "../website/images/banner.jpg";
+        else
+            return $slider[0]->image_url;
+}
+
+function hasSlider()
+{
+    $slider = \App\Image::where('imageable_type','=','App\SiteSettings')->get();
+    return ($slider->count() >0)? $slider : false;
+}
+
+
+function images($id)
+{
+    return \App\Image::where("imageable_type",'=','App\Building')->where("imageable_id","=",$id)->take(1)->get()[0]->image_url;
+}

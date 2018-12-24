@@ -10,7 +10,10 @@
         <ol class="breadcrumb">
             <li><a href="{{url('adminpanel')}}"><i class="fa fa-dashboard"></i> الرئيسية </a></li>
             <li><a href="{{url('admin-panel/buildings')}}"> العقارات </a></li>
-            <li class="active"> اضف عقار جديد</li>
+            <li><a href="{{url("admin-panel/buildings/".$building->id."/images/")}}"> تعديل صورة العقار </a></li>
+            <li class="active"><a href="{{url('admin-panel/buildings/create')}}">  اضف عقار جديد
+
+                </a></li>
         </ol>
     </section>
 
@@ -121,17 +124,12 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group row">
                                 <div class="col-md-6 {{ $errors->has('address') ? ' has-error' : '' }}">
                                     {{Form::label('address', ' عنوان العقار  ')}}
                                     {{--{!! Form::text('address', null ,['class' => 'form-control']) !!}--}}
-                                    <select  class="form-control" name="address_id">
-                                        @foreach(address() as $address)
-                                            <option value="{{$address->id}}">
-                                                {{$address->name}}
-                                            </option>
-                                        @endforeach
+                                    <select  class="form-control select" name="address_id" >
+
                                     </select>
                                     @if ($errors->has('address'))
                                         <span class="help-block">
@@ -140,6 +138,7 @@
                                     @endif
                                 </div>
                             </div>
+
 
 
 
@@ -191,7 +190,7 @@
                             <div class="form-group row mb-2">
                                 <div class="col-md-1 ">
                                     <button type="submit" class="btn btn-success">
-                                        اضافة عقار
+                                        تعديل العقار
                                     </button>
                                 </div>
                             </div>
@@ -212,3 +211,30 @@
 
 
 
+@section('footer')
+    {!! Html::style("website/css/select2.min.css") !!}
+    {!! Html::script("website/js/select2.min.js") !!}
+
+    <script>
+
+
+
+        $('.select').select2({
+            placeholder: 'مكان العقار',
+            ajax: {
+                url: '/countries',
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+
+        });
+
+    </script>
+
+@endsection

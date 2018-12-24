@@ -12,17 +12,20 @@
                     @endif
                     <div class="col-sm-4">
                         <article class="col-item">
-
                             <div class="photo">
-                                <a href="#"> <img src="https://unsplash.it/500/300?image=0" class="img-responsive"
-                                                  alt="Product Image"/> </a>
+
+                                <a href="#">
+
+                                    <img src="{{Request::root()}}/{{images($building->id)}}" class="img-responsive"
+                                                  alt="{{$building->name}}"  style="max-width: 289px; max-height: 173.39px"/>
+                                </a>
                             </div>
 
                             <div class="info">
                                 <div class="row">
                                     <div class="price-details col-md-12">
                                         <p class="details">
-                                            {{$building->desc}}
+                                            {{mb_substr($building->desc,0,45)}}...
                                         </p>
                                         <h1>{{$building->name}} </h1>
                                         <span class="price-new">${{$building->price}}</span>

@@ -36,11 +36,11 @@
                         <div class="alert alert-info">
                             {{ session('message') }}
                         </div>
-                @endif
+                    @endif
                 <!-- /.box-header -->
                     <div class="box-body">
 
-                        <form action="#" method="post" class="settingEdit">
+                        <form action="/buidings" method="post" class="settingEdit" enctype="multipart/form-data" >
                             <div id="editformresults"></div>
                             @csrf
                             {{method_field("PUT")}}
@@ -56,11 +56,7 @@
                                         @else
                                             {!! Form::Textarea($setting->name,$setting->value,['class' => 'form-control input']) !!}
                                         @endif
-                                        @if ($errors->has($setting->name))
-                                            <span class="help-block">
-                                            <strong>{{ $errors->first($setting->name) }}</strong>
-                                       </span>
-                                        @endif
+
 
                                     </div>
                                 </div>
@@ -107,12 +103,10 @@
                 success:function (data) {
                     result.removeClass().addClass('alert alert-success').html(data.msg);
                     setTimeout(function() {
-                       window.location.reload();
+                        window.location.reload();
                     }, 1000);
                 }
-
             })
-
         });
 
     /*

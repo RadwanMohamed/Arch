@@ -12,7 +12,7 @@
         </a>
         <ul class="treeview-menu">
             <li class="active"><a href="{{url('http://arch.com/admin-panel/site/settings')}}"><i class="fa fa-circle-o"></i> الاعدادات الرئيسية  </a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> اعدادات اخرى </a></li>
+            <li ><a href="{{url('http://arch.com/admin-panel/site/settings/slider')}}"><i class="fa fa-circle-o"></i> اعدادات السليدر  </a></li>
         </ul>
     </li>
 
@@ -46,6 +46,7 @@
         <ul class="treeview-menu">
             <li class="active"><a href="{{url('/admin-panel/buildings')}}"><i class="fa fa-circle-o"></i> عرض جميع العقارات  </a></li>
             <li><a href="{{url('/admin-panel/buildings/create')}}"><i class="fa fa-circle-o"></i>  اضف عقار جديد  </a></li>
+            <li><a href="{{url('/admin-panel/buildings/mybuildings')}}"><i class="fa fa-circle-o"></i> عرض العقارات الخاصة بي  </a></li>
         </ul>
     </li>
 

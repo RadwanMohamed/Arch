@@ -35,4 +35,8 @@ class User extends Authenticatable
     public function buildings(){
         return $this->hasMany('App\Building');
     }
+
+    public function images(){
+        return $this->morphMany('App\Image','imageable');
+    }
 }

@@ -6,13 +6,12 @@ use App\Address;
 use App\Building;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Type;
+use function foo\func;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 class HomeBuildingController extends SearchController
 {
-
-
 
 
     /**
@@ -132,3 +131,12 @@ class HomeBuildingController extends SearchController
 
 
 }
+
+// join
+/**
+ ->join('images',function($join){
+$join->on('buildings.id','=','images.imageable_id')
+->where('images.imageable_type','=','App\Building');
+})
+
+ */
