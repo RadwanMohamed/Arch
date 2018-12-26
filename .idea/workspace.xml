@@ -2,47 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed0aa267-001b-49d7-b1a3-5846e0f15e8f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/contact/reset.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/contact/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/css/reset.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/css/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/img/item-1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/img/item-2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/img/item-3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/js/jquery-2.1.1.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/js/main.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/js/modernizr.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/js/velocity-LICENSE.md" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/quickview/js/velocity.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/views/website/contact/contact.blade.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BuildingImagesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/BuildingImagesController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeBuildingController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeBuildingController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/BuildingRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/BuildingRequest.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ImageRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/ImageRequest.php" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/SliderRequest.php" afterPath="$PROJECT_DIR$/app/Http/Requests/SliderRequest.php" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/helper.php" afterPath="$PROJECT_DIR$/app/helpers/helper.php" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2018_12_10_133104_create_buildings_table.php" afterPath="$PROJECT_DIR$/database/migrations/2018_12_10_133104_create_buildings_table.php" />
-      <change beforePath="$PROJECT_DIR$/public/customs/buildings.css" afterPath="$PROJECT_DIR$/public/customs/buildings.css" />
-      <change beforePath="$PROJECT_DIR$/public/images/13895148_622813741218107_578109649488382431_n.jpg" afterPath="$PROJECT_DIR$/public/images/13895148_622813741218107_578109649488382431_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/14141526_1128138353934981_6021090713184274832_n.jpg" afterPath="$PROJECT_DIR$/public/images/14141526_1128138353934981_6021090713184274832_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/14163923_997349153711133_1481014345_o.jpg" afterPath="$PROJECT_DIR$/public/images/14163923_997349153711133_1481014345_o.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/14171865_582518698623567_1850407110_n.jpg" afterPath="$PROJECT_DIR$/public/images/14171865_582518698623567_1850407110_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00013895148_622813741218107_578109649488382431_n.jpg" afterPath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00013895148_622813741218107_578109649488382431_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00014141526_1128138353934981_6021090713184274832_n.jpg" afterPath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00014141526_1128138353934981_6021090713184274832_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00014163923_997349153711133_1481014345_o.jpg" afterPath="$PROJECT_DIR$/public/images/18-12-23-10-50-41-00014163923_997349153711133_1481014345_o.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-10-50-42-00014171865_582518698623567_1850407110_n.jpg" afterPath="$PROJECT_DIR$/public/images/18-12-23-10-50-42-00014171865_582518698623567_1850407110_n.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-10-50-42-000exactly.png" afterPath="$PROJECT_DIR$/public/images/18-12-23-10-50-42-000exactly.png" />
-      <change beforePath="$PROJECT_DIR$/public/images/18-12-23-11-25-11-000omar.jpg" afterPath="$PROJECT_DIR$/public/images/18-12-23-11-25-11-000omar.jpg" />
-      <change beforePath="$PROJECT_DIR$/public/images/exactly.png" afterPath="$PROJECT_DIR$/public/images/exactly.png" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/nav.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/buildings/all.blade.php" afterPath="$PROJECT_DIR$/resources/views/website/buildings/all.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/buildings/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/website/buildings/show.blade.php" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,7 +19,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeBuildingController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomeBuildingController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeBuildingController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
@@ -72,6 +32,16 @@
                 <element signature="e#4042#4158#0#PHP" expanded="false" />
                 <element signature="e#4163#4522#0#PHP" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,7 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/website/js/select2.min.js" />
         <option value="$PROJECT_DIR$/public/website/css/select2.min.css" />
         <option value="$PROJECT_DIR$/app/SiteSetting.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
@@ -199,6 +168,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2018_12_10_133104_create_buildings_table.php" />
         <option value="$PROJECT_DIR$/resources/views/website/buildings/all.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeBuildingController.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -331,97 +301,7 @@
             <path>
               <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
               <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="helpers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Http" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Requests" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="buildings" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="layouts" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="layouts" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="website" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="website" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="buildings" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arch" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="website" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="contact" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Arch" type="b2602c69:ProjectViewProjectNode" />
@@ -511,12 +391,12 @@
       <workItem from="1545635087845" duration="8806000" />
       <workItem from="1545669077313" duration="9789000" />
       <workItem from="1545683196959" duration="47000" />
-      <workItem from="1545727317143" duration="57511000" />
+      <workItem from="1545727317143" duration="57774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="549523000" />
+    <option name="totallyTimeSpent" value="549786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -567,13 +447,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Requests/UserRequest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/SliderRequest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
@@ -1405,6 +1278,14 @@
             <element signature="e#4042#4158#0#PHP" expanded="false" />
             <element signature="e#4163#4522#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="14" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
