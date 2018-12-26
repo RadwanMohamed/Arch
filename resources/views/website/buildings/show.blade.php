@@ -35,9 +35,11 @@
                                             </ol>
 
                                             <div class="btn-group">
-                                                <a href="#" class="btn btn-link btn-share">Share</a>
-                                                <a href="#" class="btn btn-link">اضف عقار </a>
+                                                <a href="/building/add" class="btn btn-link">اضف عقار </a>
                                             </div>
+
+
+
                                         </nav>
                                     </div>
 
@@ -97,6 +99,7 @@
                                                 <br>
                                             </dl>
                                         </div>
+
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="product-seller-recommended">
@@ -106,7 +109,11 @@
                                             <div class="product-description mb-5">
                                                 <div class="col-lg-12 border-class">
                                                     <h2 class="mb-5 pull-right">{{$building->name}}</h2>
+                                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                                   <div class="share">
+                                                       <div class="addthis_inline_share_toolbox"></div>
 
+                                                   </div>
                                                 </div>
 
                                                 <p style="    text-align: justify;">
@@ -191,5 +198,13 @@
     {!! Html::script('/customs/request.js') !!}
 
     {!! Html::script('/customs/show.js') !!}
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c22187a0a88df3e"></script>
 
-@endsection()
+@endsection
+
+{{--
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c2214184ad41f2e"></script>
+
+--}}

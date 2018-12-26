@@ -49,6 +49,18 @@
             <li><a href="{{url('/admin-panel/buildings/mybuildings')}}"><i class="fa fa-circle-o"></i> عرض العقارات الخاصة بي  </a></li>
         </ul>
     </li>
+    <li class=" treeview">
+        <a href="#">
+            <i class="fa fa-dashboard"></i> <span>  الرسائل </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{url('/admin-panel/contacts')}}"><i class="fa fa-circle-o"></i> عرض جميع الرسائل  </a></li>
+        </ul>
+    </li>
 
 
 

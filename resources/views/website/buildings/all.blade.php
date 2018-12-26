@@ -51,6 +51,42 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </div>
+        @if(Auth::id())
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    <h4 class="panel-title pull-right">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+
+                            {{Auth::user()->name}}
+
+                        </a>
+                    </h4>
+
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <a href="{{url('/user/' .Auth::id() .'/buildings/')}}">
+                                        العقارات التى قمت برفعها
+
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    العقارات التى قمت برفعها
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="list-group">
             <span href="#" class="list-group-item active" style="background-color: rgba(0,0,0,.03);">
                 <span class="pull-right" style="color: #1a2226">
@@ -60,6 +96,7 @@
                     <i class="fa fa-times"></i>
                 </span>
             </span>
+
             <a href="{{url('/buildings')}}" class="list-group-item">
                 <span class="pull-right">
 

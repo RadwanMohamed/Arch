@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Address;
 use App\Building;
 use App\Http\Requests\AdvancedSearchRequest;
+use App\Http\Requests\BuildingRequest;
 use App\Type;
 use function foo\func;
 use Illuminate\Http\Request;
@@ -13,6 +14,37 @@ use App\User;
 class HomeBuildingController extends SearchController
 {
 
+
+
+    /**
+     * display create form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function add()
+    {
+        $types = Type::all();
+        return view('website.buildings.add',compact('types'));
+    }
+    public function store(BuildingRequest $request)
+    {
+        $building = Building::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'square' => $request->square,
+            'property' => $request->property,
+            'desc' => mb_substr($request->description,0,160),
+            'meta' => $request->meta,
+            'address_id' => $request->address_id,
+            'rooms' => $request->rooms,
+            'description' => $request->description,
+            'status' => 0,
+            'user_id' => 1,
+            'type_id' => $request->type_id
+        ]);
+        $this->uploadMultiple($request->images);
+        $this->addAllUrl($building->id, 'App\Building');
+        return redirect('/');
+    }
 
     /**
      * display all avialabe buildings

@@ -38,6 +38,15 @@ Route::group(['middleware'=>['admin','web']],function (){
     Route::resource('/admin-panel/buildings',"BuildingController")->except('show');
     Route::resource('/admin-panel/buildings.images',"BuildingImagesController")->except('show');
 
+    Route::get('/admin-panel/contacts/messages','ContactController@allMessages');
+    Route::get('/admin-panel/contacts','ContactController@all');
+    Route::get('/admin-panel/contacts/{contact}/show','ContactController@show');
+    Route::delete('/admin-panel/contacts/{contact}','ContactController@destroy');
+    Route::delete('/admin-panel/contacts/read/delete','ContactController@deleteReadMessages');
+    Route::delete('/admin-panel/contacts/all/delete','ContactController@deleteAll');
+    Route::post('/admin-panel/contacts/{contact}/notread','ContactController@notRead');
+
+
 
 });
 
@@ -58,7 +67,9 @@ Route::get("/user/{user}/buildings/",'HomeBuildingController@userBuildings');
 Route::get("/buildings/possession/{type}/",'HomeBuildingController@property');
 Route::get("/buildings/type/{type}/",'HomeBuildingController@type');
 Route::get("/buildings/advanced/search/",'HomeBuildingController@advancedSearch')->name('search');
-
+Route::resource('/contactus','ContactController')->only(['index','store']);
+Route::get('/building/add','HomeBuildingController@add');
+Route::post('/building/store','HomeBuildingController@store');
 
 
 Auth::routes();

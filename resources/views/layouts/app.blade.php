@@ -26,7 +26,13 @@
     </title>
     <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
 
+<style>
+    .banner{
+        background: url({{ getSlider()}}) no-repeat center;
 
+    }
+
+</style>
     @yield('header')
 </head>
 <body style="direction: rtl" lang="ar" class="amiri">
@@ -74,7 +80,7 @@
 
                             <li><a href="about.html">من نحن</a></li>
                             <li><a href="services.html">خدماتنا</a></li>
-                            <li><a href="contact.html">اتصل بنا </a></li>
+                            <li><a href="{{route('contactus.index')}}">اتصل بنا </a></li>
                             <li>
                                 <!-- Authentication Links -->
                                 @guest
@@ -139,12 +145,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @yield('footer')
-<script>
-    $(document).ready(function () {
-        $('.banner').css('background',"url({{ getSlider()}}) no-repeat center")
-    });
 
-</script>
 
 </body>
 </html>

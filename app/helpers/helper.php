@@ -48,5 +48,32 @@ function hasSlider()
 
 function images($id)
 {
-    return \App\Image::where("imageable_type",'=','App\Building')->where("imageable_id","=",$id)->take(1)->get()[0]->image_url;
+   $image =  \App\Image::where("imageable_type",'=','App\Building')->where("imageable_id","=",$id)->take(1)->get();
+   foreach ($image as $img)
+   {
+       return $img->image_url;
+   }
+}
+
+function latestBuildings()
+{
+    return \App\Building::where('status','=',1)->orderBy("created_at","DESC")->take(12)->get();
+
+}
+
+function subject()
+{
+    return [
+      "suggestion" => 'اقتراح',
+        'question' => 'استفسار',
+        'problem'  => 'مشكلة',
+    ];
+}
+
+
+function unReadMessages(){
+    return App\Contact::where("view",0)->get();
+}
+function notification(){
+    return App\Building::where("status",0)->get();
 }

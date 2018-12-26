@@ -19,8 +19,8 @@ class CreateBuildingsTable extends Migration
             $table->string('price');
             $table->string('square');
             $table->boolean('property');
-            $table->string('desc');
-            $table->string('meta');
+            $table->text('desc');
+            $table->text('meta');
             $table->text('description');
             $table->boolean('status');
             $table->integer('rooms');
