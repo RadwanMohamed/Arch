@@ -194,7 +194,6 @@
 
        </div>
 
-        <div class="about-info">
         <div class="highlight-info">
             <div class="overlay spacer">
                 <div class="container">
@@ -210,7 +209,7 @@
                         </div>
                         <div class="col-sm-3 col-xs-6"> <i class="fa fa-map-marker fa-5x"></i>
                             <h4>
-                                {{typeCount()}}
+                                {{buildingTypeCount()}}
                                 نوع عقار
                             </h4>
                         </div>
@@ -224,16 +223,29 @@
                     <h2>رسائل العملاء </h2>
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            @foreach(messages() as $message)
-                            <li data-target="#carousel-example-generic" data-slide-to="{{$message->id}}" class="active"> <a href="#"></a> </li>
+                            @foreach(messages() as $key=> $message)
+                                @if($key == 0)
+                                    <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class="active"> <a href="#"></a> </li>
+
+                                @else
+                                    <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class=""> <a href="#"></a> </li>
+
+                                @endif
                           @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            @foreach(messages() as $message)
-                            <div class="item active">
+                            @foreach(messages() as $key=>$message)
+                                @if($key == 0)
+                                <div class="item active">
                                 <p>{{$message->message}}</p>
                                 <p><strong>- {{$message->name}} -</strong></p>
                             </div>
+                                @else
+                                    <div class="item">
+                                        <p>{{$message->message}}</p>
+                                        <p><strong>- {{$message->name}} -</strong></p>
+                                    </div>
+                                    @endif
                                 @endforeach
 
                         </div>
@@ -241,12 +253,13 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
 @endsection
 
 @section('footer')
+
     {!! Html::style("website/css/select2.min.css") !!}
     {!! Html::script("website/js/select2.min.js") !!}
 
@@ -254,8 +267,6 @@
     {!! Html::script("quickview/js/main.js") !!}
 
     <script>
-
-
 
         $('.select2').select2({
             placeholder: 'مكان العقار',
@@ -274,11 +285,12 @@
 
 
 
+
         $('.cd-trigger').on('click', function(event) {
             var liclass = '';
             var slider = '';
             id = this.id;
-            url = 'admin-panel/buildings/'+id+'/images';
+            url = '/'+id +'/images/';
 
             $.ajax({
                url   : url,

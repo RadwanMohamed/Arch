@@ -97,3 +97,8 @@ function contactCount()
     return App\Contact::count();
 
 }
+function buildingTypeCount()
+{
+    return App\Type::count();
+
+}

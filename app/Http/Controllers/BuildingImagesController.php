@@ -14,10 +14,9 @@ class BuildingImagesController extends ImageController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Building $building,Request $request)
+    public function index(Building $building)
     {
-        if($request->ajax())
-            return response(['building'=>$building,'images'=>$building->images],200);
+
 
         return view("admin.buildings.images.index",compact('building'));
     }

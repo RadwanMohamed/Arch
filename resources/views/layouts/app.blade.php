@@ -138,9 +138,9 @@
             @yield('content')
         <div class="footer">
             <div class="footer_bottom">
-                <div class="follow-us"> <a class="fa fa-facebook social-icon" href="#"></a> <a class="fa fa-twitter social-icon" href="#"></a> <a class="fa fa-linkedin social-icon" href="#"></a> <a class="fa fa-google-plus social-icon" href="#"></a> </div>
+                <div class="follow-us"> <a class="fa fa-facebook social-icon" href="{{siteSetting('facebook')}}"></a> <a class="fa fa-twitter social-icon" href="{{siteSetting('twitter')}}"></a> <a class="fa fa-linkedin social-icon" href="{{siteSetting('linkedin')}}"></a> <a class="fa fa-google-plus social-icon" href="{{siteSetting('google')}}"></a> </div>
                 <div class="copy">
-                    <p>Copyright &copy; 2015 Company Name. Design by <a href="http://www.templategarden.com" rel="nofollow">TemplateGarden</a></p>
+                    <p>{{siteSetting('copyright')}}</p>
                 </div>
             </div>
         </div>
@@ -153,6 +153,8 @@
     {!! Html::script('website/js/jquery.flexslider.js') !!}
     {!! Html::script('js/app.js') !!}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jqu/ery/3.3.1/core.js"></script>--}}
+
 
     @yield('footer')
 

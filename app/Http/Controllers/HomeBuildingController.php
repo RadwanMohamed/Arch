@@ -98,8 +98,10 @@ class HomeBuildingController extends SearchController
      * @param Building $building
      * @return \Illuminate\Contracts\View\View
      */
-    public function viewImages(Building $building)
+    public function viewImages(Building $building,Request $request)
     {
+        if($request->ajax())
+            return response(['building'=>$building,'images'=>$building->images],200);
         return View::make('website.buildings.editimages',compact('building'));
     }
 

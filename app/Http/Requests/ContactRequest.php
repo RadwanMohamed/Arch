@@ -27,7 +27,7 @@ class ContactRequest extends FormRequest
             'name'      => ['required','string'],
             'email'     => ['required','email'],
             'subject'   => ['required','string'],
-            'message'   => ['required','alpha_num'],
+            'message'   => ['required','regex:/^[\pL\s\-]+$/u'],
         ];
     }
 }
