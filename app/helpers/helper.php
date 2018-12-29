@@ -67,13 +67,33 @@ function subject()
       "suggestion" => 'اقتراح',
         'question' => 'استفسار',
         'problem'  => 'مشكلة',
+        'thanks'        =>  'شكر'
     ];
 }
 
-
+function messages()
+{
+    return App\Contact::where('subject','شكر')->take(5)->get();
+}
 function unReadMessages(){
     return App\Contact::where("view",0)->get();
 }
 function notification(){
     return App\Building::where("status",0)->get();
+}
+
+function usersCount()
+{
+    return App\User::count();
+
+}
+function buildingsCount()
+{
+    return App\Building::count();
+
+}
+function contactCount()
+{
+    return App\Contact::count();
+
 }

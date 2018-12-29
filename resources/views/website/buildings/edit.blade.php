@@ -1,14 +1,20 @@
 @extends('website.buildings.layout')
-
 @section('tab-content')
-    <form method="POST" action="/building/store" enctype="multipart/form-data">
+
+    <div class="btn-group" role="group" aria-label="..." style="margin-left:280px; margin-top: 150px">
+        <button type="button" class="btn btn-secondary images-btn"> تعديل صور العقار</button>
+        <button type="button" class="btn btn-secondary info-btn">تعديل معلومات العقار</button>
+
+    </div>
+    <form method="POST" action="/buildings/{{$building->id}}" enctype="multipart/form-data">
         @csrf
-        <div class="row register-form" style="margin-right: 90px" >
+        @method('PUT')
+        <div class="row register-form" style="margin-right: 90px; margin-top: -30px;" >
             <div class="col-md-8 pull-right">
                 <div class=" {{ $errors->has('name') ? ' has-error' : '' }}" >
                     {{--<input id="name" placeholder="الاسم" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
                     <label for="name" style="float: right"> الاسم </label>
-                    {!! Form::text('name',isset($user->name)? $user->name : null ,['class' => 'form-control']) !!}
+                    {!! Form::text('name',isset($building->name)? $building->name : null ,['class' => 'form-control']) !!}
                     @if ($errors->has('name'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('name') }}</strong>
@@ -18,7 +24,7 @@
                 <div class=" {{ $errors->has('price') ? ' has-error' : '' }}" style="margin-top:17px">
                     {{--<input id="name" placeholder="الاسم" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>--}}
                     <label for="name" style="float: right"> السعر </label>
-                    {!! Form::text('price', null ,['class' => 'form-control']) !!}
+                    {!! Form::text('price', $building->price ,['class' => 'form-control']) !!}
                     @if ($errors->has('price'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('price') }}</strong>
@@ -28,7 +34,7 @@
 
                 <div class=" {{ $errors->has('meta') ? ' has-error' : '' }}">
                     <label for="name" style="float: right"> الكلمات الدلالية  </label>
-                    {!! Form::textarea('meta', null ,['class' => 'form-control']) !!}
+                    {!! Form::textarea('meta', $building->meta ,['class' => 'form-control']) !!}
                     @if ($errors->has('meta'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('meta') }}</strong>
@@ -37,13 +43,14 @@
                 </div>
                 <div class=" {{ $errors->has('property') ? ' has-error' : '' }}">
                     <label for="name" style="float: right"> نوع الملكية </label>
-                    {!! Form::select('property', ['0' => 'ايجار', '1' => 'ملك'],null,['class' => 'form-control']);!!}
+                    {!! Form::select('property', ['0' => 'ايجار', '1' => 'ملك'],$building->property,['class' => 'form-control']);!!}
                     @if ($errors->has('property'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('property') }}</strong>
                                          </span>
                     @endif
                 </div>
+
                 <div class=" {{ $errors->has('type_id') ? ' has-error' : '' }}">
                     <label for="name" style="float: right"> نوع العقار </label>
                     <select name="type_id" class="form-control">
@@ -67,7 +74,7 @@
                 <div class="form-group row">
                     <div class="col-md-12 {{ $errors->has('square') ? ' has-error' : '' }}" >
                         <label for="name" style="float: right"> المساحة </label>
-                        {!! Form::text('square', null ,['class' => 'form-control']) !!}
+                        {!! Form::text('square', $building->square ,['class' => 'form-control']) !!}
                         @if ($errors->has('square'))
                             <span class="help-block">
                                              <strong>{{ $errors->first('square') }}</strong>
@@ -77,7 +84,7 @@
                 </div>
                 <div class=" {{ $errors->has('rooms') ? ' has-error' : '' }}">
                     <label for="name" style="float: right"> عدد الغرف </label>
-                    {!! Form::text('rooms', null ,['class' => 'form-control']) !!}
+                    {!! Form::text('rooms', $building->rooms ,['class' => 'form-control']) !!}
                     @if ($errors->has('rooms'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('rooms') }}</strong>
@@ -86,7 +93,7 @@
                 </div>
                 <div class=" {{ $errors->has('description') ? ' has-error' : '' }}">
                     <label for="name" style="float: right"> وصف العقار </label>
-                    {!! Form::textarea('description', null ,['class' => 'form-control',"cols"=>20]) !!}
+                    {!! Form::textarea('description', $building->description ,['class' => 'form-control',"cols"=>20]) !!}
                     @if ($errors->has('description'))
                         <span class="help-block">
                                              <strong>{{ $errors->first('description') }}</strong>
@@ -108,30 +115,32 @@
                     @endif
                 </div>
 
-                <div class="{{$errors->has('images') ? ' has-error' : '' }}">
-                    <label for="name" style="float: right"> صور العقار(5 صور كافية ) </label>
-                    <input type="file" multiple name="images[]" placeholder="اضف صور للعقار"class="form-control">
-
-                    @if ($errors->has('images'))
-                        <span class="help-block">
-
-                                            <strong>
-                                                 {{ $errors->first('images') }}
-                                             </strong>
-
-                                         </span>
-                    @endif
-                </div>
-                <button class="btnRegister" style="margin-right:-100px "> انشاء عقار جديد </button>
+                <br>
+                <br>
+                <br>
+                <button class="btnRegister" style="margin-right:-100px; "> انشاء عقار جديد </button>
             </div>
+
         </div>
+
     </form>
 
 
 @endsection
 
-
 @section('footer')
+
+
+    <script>
+      $(document).on('click','.images-btn',function (e) {
+          e.preventDefault();
+         $(location).attr('href','/{{$building->id}}/images/');
+      });
+      $(document).on('click','.info-btn',function () {
+          e.preventDefault();
+      });
+    </script>
+
     {!! Html::style("website/css/select2.min.css") !!}
     {!! Html::script("website/js/select2.min.js") !!}
     <script>
@@ -153,7 +162,13 @@
 
 
 
+
+
     </script>
 
 
 @endsection
+
+
+
+

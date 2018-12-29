@@ -5,14 +5,26 @@
 
     <li class=" treeview">
         <a href="#">
+            <i class="fa fa-dashboard"></i> <span>الرئيسية</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-left"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="active"><a href="{{url('/adminpanel')}}"><i class="fa fa-circle-o"></i>  احصائيات الموقع  </a></li>
+            <li ><a href="{{url('/adminpanel/stat')}}"><i class="fa fa-circle-o"></i> احصائيات بالسنة  </a></li>
+        </ul>
+    </li>
+    <li class=" treeview">
+        <a href="#">
             <i class="fa fa-dashboard"></i> <span>اعدادات الموقع</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-left"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="active"><a href="{{url('http://arch.com/admin-panel/site/settings')}}"><i class="fa fa-circle-o"></i> الاعدادات الرئيسية  </a></li>
-            <li ><a href="{{url('http://arch.com/admin-panel/site/settings/slider')}}"><i class="fa fa-circle-o"></i> اعدادات السليدر  </a></li>
+            <li class="active"><a href="{{url('/admin-panel/site/settings')}}"><i class="fa fa-circle-o"></i> الاعدادات الرئيسية  </a></li>
+            <li ><a href="{{url('/admin-panel/site/settings/slider')}}"><i class="fa fa-circle-o"></i> اعدادات السليدر  </a></li>
         </ul>
     </li>
 
@@ -45,6 +57,7 @@
 
         <ul class="treeview-menu">
             <li class="active"><a href="{{url('/admin-panel/buildings')}}"><i class="fa fa-circle-o"></i> عرض جميع العقارات  </a></li>
+            <li class="active"><a href="{{url('/admin-panel/users/'.Auth::id().'/buildings')}}"><i class="fa fa-circle-o"></i> عرض جميع العقارات  الخاصة بي  </a></li>
             <li><a href="{{url('/admin-panel/buildings/create')}}"><i class="fa fa-circle-o"></i>  اضف عقار جديد  </a></li>
             <li><a href="{{url('/admin-panel/buildings/mybuildings')}}"><i class="fa fa-circle-o"></i> عرض العقارات الخاصة بي  </a></li>
         </ul>

@@ -83,17 +83,22 @@
 
 @section('footer')
 <script>
-    $('.building-image').bind('mouseover',function () {
-        $("a",this).fadeIn();
-        $("button",this).fadeIn();
-
-    });
-    $('.building-image').bind('mouseleave',function () {
-        $("a",this).fadeOut();
-        $("button",this).fadeOut();
-
+    $(document).ready(function(e){
+        $(".img-check").click(function(){
+            $(this).toggleClass("check");
+        });
     });
 
+    $('.building-image').bind('mouseover', function () {
+        $("a", this).fadeIn();
+        $("button", this).fadeIn();
+
+    });
+    $('.building-image').bind('mouseleave', function () {
+        $("a", this).fadeOut();
+        $("button", this).fadeOut();
+
+    });
 $(document).on('click','.delete-image',function (e) {
    e.preventDefault();
    image = $(this).parents('.building-image');

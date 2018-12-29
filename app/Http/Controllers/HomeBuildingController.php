@@ -6,13 +6,18 @@ use App\Address;
 use App\Building;
 use App\Http\Requests\AdvancedSearchRequest;
 use App\Http\Requests\BuildingRequest;
+use App\Http\Requests\ImageRequest;
+use App\Image;
 use App\Type;
-use function foo\func;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\View;
+
 class HomeBuildingController extends SearchController
 {
+
 
 
 
@@ -25,6 +30,12 @@ class HomeBuildingController extends SearchController
         $types = Type::all();
         return view('website.buildings.add',compact('types'));
     }
+
+    /**
+     * store building
+     * @param BuildingRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(BuildingRequest $request)
     {
         $building = Building::create([
@@ -38,12 +49,91 @@ class HomeBuildingController extends SearchController
             'rooms' => $request->rooms,
             'description' => $request->description,
             'status' => 0,
-            'user_id' => 1,
+            'user_id' => (Auth::check() == true)? Auth::id() : 1 ,
             'type_id' => $request->type_id
         ]);
         $this->uploadMultiple($request->images);
         $this->addAllUrl($building->id, 'App\Building');
         return redirect('/');
+    }
+
+    public function edit(Building $building)
+    {
+        if ($building->status != 0 || $building->user_id != Auth::id())
+            return redirect()->back();
+        $types =Type::all();
+
+        return view('website.buildings.edit',compact('building','types'));
+    }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Building $building
+     * @return \Illuminate\Http\Response
+     */
+    public function update(BuildingRequest $request, Building $building)
+    {
+        if ($building->status != 0 || $building->user_id != Auth::id())
+            return redirect()->back();
+
+        $building->name = $request->name;
+        $building->price = $request->price;
+        $building->square = $request->square;
+        $building->property = $request->property;
+        $building->desc = mb_substr($request->description,0,160);
+        $building->meta = $request->meta;
+        $building->address_id = $request->address_id;
+        $building->description = $request->description;
+        $building->user_id = Auth::id();
+        $building->type_id = $request->type_id;
+        if (!$building->isDirty())
+            return redirect()->back()->with('flash', '  يجب تعديل بعض البيانات قبل التحديث  ');
+        $building->save();
+        return redirect('/buildings/'.$building->user_id.'/unactivated')->with('flash', ' تمت تعديل بيانات العقار ');
+    }
+
+    /**
+     * display images to edit it
+     * @param Building $building
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function viewImages(Building $building)
+    {
+        return View::make('website.buildings.editimages',compact('building'));
+    }
+
+
+    /**
+     * update image by id
+     * @param ImageRequest $request
+     * @param Building $building
+     * @param Image $image
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function updateImages(ImageRequest $request,Building $building,Image $image)
+    {
+        if ($building->status != 0 || $building->user_id != Auth::id())
+            return redirect()->back();
+
+        $this->delete($image->image_url);
+        $filename = $this->uploadFile($request->images);
+        $this->updateUrl($image,$filename);
+        return redirect("".$building->id."/images");
+
+
+    }
+
+    /**
+     * display all unactivated buildings
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function unActivated($id)
+    {
+        $buildings = Building::where([['status','=',0],['user_id','=',$id]])->paginate(9);
+        return view('website.buildings.buildings', compact('buildings'));
+
     }
 
     /**
@@ -164,11 +254,3 @@ class HomeBuildingController extends SearchController
 
 }
 
-// join
-/**
- ->join('images',function($join){
-$join->on('buildings.id','=','images.imageable_id')
-->where('images.imageable_type','=','App\Building');
-})
-
- */

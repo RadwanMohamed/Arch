@@ -4,7 +4,6 @@
 @endsection
 
 <!--
-
 <div class="flex-center position-ref full-height">
     @if (Route::has('login'))
     <div class="top-right links">
@@ -12,16 +11,12 @@
         <a href="{{ url('/home') }}">Home</a>
             @else
         <a href="{{ route('login') }}">Login</a>
-
                 @if (Route::has('register'))
             <a href="{{ route('register') }}">Register</a>
                 @endif
     @endauth
         </div>
     @endif
-
-
-
     </div>
 -->
 
@@ -46,17 +41,12 @@
 
 
     <div class="col-sm-4 col-md-3 sidebar" style="float: right">
-        <div class="mini-submenu">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </div>
         @if(Auth::id())
             <div class="panel panel-default">
                 <div class="panel-heading">
 
                     <h4 class="panel-title pull-right">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
 
                             {{Auth::user()->name}}
 
@@ -64,9 +54,10 @@
                     </h4>
 
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
+                <div id="collapseOne" class="panel-collapse collapse">
                     <div class="panel-body">
                         <table class="table">
+
                             <tr>
                                 <td>
                                     <a href="{{url('/user/' .Auth::id() .'/buildings/')}}">
@@ -77,9 +68,34 @@
                             </tr>
                             <tr>
                                 <td>
-                                    العقارات التى قمت برفعها
+                                    <a href="{{url('/buildings/'.Auth::id().'/unactivated')}}">
+                                        عقارات فى انتظار التفعيل
+                                    </a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <a href="/building/add">
+                                        اضف عقار جديد
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <a href="{{url('/'.Auth::id().'/email/reset')}}">
+                                        تعديل الايميل
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="{{url('/'.Auth::id() .'/password/reset')}}">
+                                        تغيير كلمة السر
+                                    </a>
+                                </td>
+                            </tr>
+
 
                         </table>
 
@@ -87,6 +103,13 @@
                 </div>
             </div>
         @endif
+
+        <div class="mini-submenu">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </div>
+
         <div class="list-group">
             <span href="#" class="list-group-item active" style="background-color: rgba(0,0,0,.03);">
                 <span class="pull-right" style="color: #1a2226">
@@ -96,8 +119,7 @@
                     <i class="fa fa-times"></i>
                 </span>
             </span>
-
-            <a href="{{url('/buildings')}}" class="list-group-item">
+            <a  href="{{url('/buildings')}}" class="list-group-item">
                 <span class="pull-right">
 
                     جميع العقارات
@@ -324,7 +346,7 @@
 
     </div>
 
-@yield('buildings')
+    @yield('buildings')
 
 
 
@@ -334,8 +356,3 @@
     {!! Html::script('/customs/request.js') !!}
 
 @endsection
-
-{{--
-gazel
-
---}}

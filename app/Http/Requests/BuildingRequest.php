@@ -23,6 +23,8 @@ class BuildingRequest extends FormRequest
      */
     public function rules()
     {
+        switch ($this->method()) {
+            case 'POST': {
         return [
             'name'          => ['required', 'string', 'max:180'],
             'price'         => ['required', 'numeric'],
@@ -36,8 +38,32 @@ class BuildingRequest extends FormRequest
             'user_id'       => ['integer'],
             'rooms'       => ['required', 'integer'],
             'type_id'       => ['required', 'integer'],
+
             'images' => ['required'],
             'images.*' => ['required','mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=400,min_height=450'],
         ];
+            }
+
+            case 'PUT':
+            case 'PATCH':
+            case 'POST': {
+                return [
+                    'name'          => ['required', 'string', 'max:180'],
+                    'price'         => ['required', 'numeric'],
+                    'square'        => ['required', 'numeric'],
+                    'property'      => ['required', 'Boolean'],
+                    'desc'          => [ 'string','min:100' ,'max:160'],
+                    'meta'          => ['required', 'string'],
+                    'address_id'    => ['required', 'integer'],
+                    'description'   => ['required', 'string','min:100'],
+                    'status'        => [ 'Boolean'],
+                    'user_id'       => ['integer'],
+                    'rooms'       => ['required', 'integer'],
+                    'type_id'       => ['required', 'integer'],
+            ];
+            }
+            default:break;
+
+        }
     }
 }

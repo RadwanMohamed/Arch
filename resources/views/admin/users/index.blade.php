@@ -47,6 +47,7 @@
                                 <th> البريد الالكتروني </th>
                                 <th> العضوية </th>
                                 <th> تاريخ انشاء الحساب </th>
+                                <th> عقاراتي </th>
                                 <th> اجراء تعديل </th>
                             </tr>
                             </thead>
@@ -101,7 +102,7 @@
             if($(this).index()  < 4 ){
                 var classname = $(this).index() == 6  ?  'date' : 'dateslash';
                 var title = $(this).html();
-                $(this).html( '<input type="text" style="width:120px " class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" البحث '+title+'" />' );
+                $(this).html( '<input type="text" style="width:100px " class="' + classname + '" data-value="'+ $(this).index() +'" placeholder=" البحث '+title+'" />' );
             }else if($(this).index() == 4){
                 $(this).html( '<select><option value="0"> عضو </option><option value="1"> مدير الموقع </option></select>' );
             }
@@ -118,6 +119,7 @@
                 {data: 'email', name: 'email'},
                 {data: 'created_at', name: 'created_at'},
                 {data: 'admin', name: 'admin'},
+                {data: 'buildings', name: 'buildings'},
                 {data: 'control', name: ''}
             ],
             "language": {

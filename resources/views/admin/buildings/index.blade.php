@@ -36,6 +36,7 @@
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">عرض جميع العقارات </h3>
+                        <button class="btn btn-secondary pull-left"><a href="/admin-panel/buildings/activate">تفعيل جميع العقارات </a></button>
                     </div>
 
                     {{--'name', 'price', 'square', 'type', 'desc', 'meta', 'langtude', 'latitude', 'description', 'status', 'user_id'--}}
@@ -54,6 +55,7 @@
                                 <th> المكان </th>
                                 <th> اسم المالك </th>
                                 <th> الحالة </th>
+
                                 <th> تاريخ الانشاء </th>
                                 <th> اجراء تعديل </th>
                             </tr>
@@ -69,7 +71,14 @@
                                 <td>{{$building->type->name}}</td>
                                 <td>{{$building->address->name}}</td>
                                 <td>{{$building->user->name}}</td>
-                                <td>{{($building->property) ==0 ? ' متاح '  : " غير متاح "}}</td>
+                                <td>
+                                    @if($building->status == 0)
+                                   <button class="btn btn-secondary"> <a  href="/admin-panel/buildings/{{$building->id}}/activate"> تفعيل هذا العقار</a></button>
+                                    @else
+                                        <button class="btn btn-secondary"> <a  href="/admin-panel/buildings/{{$building->id}}/unactivate"> الغاء تفعيل هذا العقار</a></button>
+
+                                    @endif
+                                </td>
                                 <td>{{$building->created_at}}</td>
 
 

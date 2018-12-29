@@ -42,33 +42,33 @@
                 <div class="container"> <a class="navbar-brand" style="float: right" href="{{url('/')}}"><i class="fa fa-paper-plane"></i> ONE</a>
                     <div class="menu pull-left"> <a class="toggleMenu" href="#"><img src="{{Request::root()}}/website/images/nav_icon.png" alt="" /> </a>
                         <ul class="nav" id="nav">
-                            <li class="current"><a href="{{url('/home')}}">الرئيسية</a></li>
+                            <li class="current"><a id="nav" href="{{url('/home')}}">الرئيسية</a></li>
 
 
 
                             <li >
-                                <a  class="nav-link dropdown-toggle" href="{{url('/buildings')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="nav" class="nav-link dropdown-toggle " href="{{url('/buildings')}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     العقارات
                                 </a>
 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{url('/buildings')}}">
+                                    <a id="nav" class="dropdown-item" href="{{url('/buildings')}}">
                                         كل العقارات المتاحة
 
                                     </a>
 
                                     @foreach(buildingTypes() as $type)
-                                    <a class="dropdown-item" href="{{url('/buildings/type/'.$type->id)}}">
+                                    <a id="nav" class="dropdown-item" href="{{url('/buildings/type/'.$type->id)}}">
                                         {{$type->name}}
 
                                     </a>
                                     @endforeach
-                                    <a class="dropdown-item" href="{{url('/buildings/possession/0')}}">
+                                    <a id="nav" class="dropdown-item" href="{{url('/buildings/possession/0')}}">
                                         ايجار
 
                                     </a>
-                                    <a class="dropdown-item" href="{{url('/buildings/possession/1')}}">
+                                    <a id="nav" class="dropdown-item" href="{{url('/buildings/possession/1')}}">
                                         تمليك
 
                                     </a>
@@ -78,18 +78,16 @@
 
                             </li>
 
-                            <li><a href="about.html">من نحن</a></li>
-                            <li><a href="services.html">خدماتنا</a></li>
-                            <li><a href="{{route('contactus.index')}}">اتصل بنا </a></li>
+                            <li><a id="nav" href="{{route('contactus.index')}}">اتصل بنا </a></li>
                             <li>
                                 <!-- Authentication Links -->
                                 @guest
                                     <li >
-                                        <a  href="{{ route('login') }}">تسجبل الدخول</a>
+                                        <a id="nav" href="{{ route('login') }}">تسجبل الدخول</a>
                                     </li>
                                     <li class="nav-item">
                                         @if (Route::has('register'))
-                                            <a class="nav-link" href="{{ route('register') }}"> تسجيل عضوية جديدة </a>
+                                            <a class="nav-link" id="nav" href="{{ route('register') }}"> تسجيل عضوية جديدة </a>
                                         @endif
                                     </li>
                                     </li>
@@ -101,12 +99,24 @@
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                            <a class="dropdown-item" href="/building/add">
+                                                         اضف عقار جديد
+                                            </a>
+                                            <a class="dropdown-item" href="{{url('/user/' .Auth::id() .'/buildings/')}}">
+                                                         عرض جميع عقاراتي المفعلة
+                                            </a>
+                                            <a class="dropdown-item" href="{{url('/buildings/'.Auth::id().'/unactivated')}}">
+                                                         عرض جميع العقارات الغير مفعلة
+                                            </a>
+                                            <a class="dropdown-item" href="/{{Auth::id()}}/password/reset">
+                                                                                تغيير كلمة السر الخاصة بك
+                                            </a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
+                                               تسجيل الخروج
                                             </a>
-
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
                                             </form>
@@ -145,7 +155,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     @yield('footer')
-
 
 </body>
 </html>

@@ -1,29 +1,7 @@
-@extends("layouts.app")
-@section('title')
-اضافة عقار
-@endsection
+@extends('website.buildings.layout')
 
-@section('header')
-
-
-    {!! Html::style('customs/addbuilding.css') !!}
-@endsection
-
-
-@section('content')
-    <div class="container register">
-        <div class="row">
-            <div class=" register-left">
-                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                <h3>مرحبا بك فى موقعنا</h3>
-                <p>انت الان على بعد 30 ثانية من فعل شئ عظيم وكسب  الاموال</p>
-            </div>
-            <div class="col-md-9 register-right" >
-
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane  show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading"> قم بعرض عقارك الان بابسط المتطلبات </h3>
-                        <form method="POST" action="/building/store" enctype="multipart/form-data">
+@section('tab-content')
+<form method="POST" action="/building/store" enctype="multipart/form-data">
                         @csrf
                         <div class="row register-form" style="margin-right: 90px" >
                             <div class="col-md-8 pull-right">
@@ -148,15 +126,9 @@
                             </div>
                         </div>
                         </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-    </div>
 
 @endsection
-
 
 
 @section('footer')

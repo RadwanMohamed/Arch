@@ -10,6 +10,10 @@ class SiteSetting extends Model
         'slug', 'name', 'value', 'type'
     ];
 
+    /**
+     * relation between images and site settings
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function images(){
         return $this->morphMany('App\Image','imageable');
     }

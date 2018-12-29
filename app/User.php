@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Building');
     }
 
+    /**
+     * relation betwwen images and users
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function images(){
         return $this->morphMany('App\Image','imageable');
     }

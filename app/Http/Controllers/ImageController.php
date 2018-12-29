@@ -8,6 +8,10 @@ use ImageIntervention;
 use File;
 class ImageController extends Controller
 {
+    /**
+     * files name container
+     * @var array
+     */
     private $fileNames = [];
 
     /**
@@ -121,10 +125,21 @@ class ImageController extends Controller
     {
         foreach ($files as $file)
         {
-            $this->delete($file);
+            $this->delete($file->image_url);
         }
     }
 
+    /**
+     * remove all images url in database
+     * @param $urls
+     */
+    protected function removeAllUrl($urls)
+    {
+        foreach ($urls as $url)
+        {
+            $this->removeUrl($url);
+        }
+    }
     /**
      * resize image dimensions
      * @param $image

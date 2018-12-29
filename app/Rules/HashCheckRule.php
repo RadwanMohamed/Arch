@@ -29,6 +29,6 @@ class HashCheckRule implements Rule
      */
     public function message()
     {
-        return ' the old password is wrong! ';
+        return ' your password is wrong! ';
     }
 }

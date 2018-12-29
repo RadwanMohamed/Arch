@@ -18,6 +18,7 @@ class UserAuth
     {
         if ($request->route('user')->id != Auth::user()->id)
             return redirect("/login");
+
         return $next($request);
     }
 }

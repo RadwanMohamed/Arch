@@ -26,7 +26,49 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"> تعديل عقار </h3>
+                        <h3 class="box-title">
+                            صاحب العقار
+                        </h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="data" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th> رقم العضو  </th>
+                                <th> الاسم  </th>
+                                <th> الايميل </th>
+                                <th> العضوية </th>
+                                <th> تاريخ الانشاء </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{$building->user->id}}</td>
+                                    <td>{{$building->user->name}}</td>
+                                    <td>{{$building->user->email}}</td>
+                                    <td>{{$building->user->admin ==0 ? 'عضو' :  ' مدير '}}</td>
+                                    <td>{{$building->user->created_at}}</td>
+
+
+
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"> تعديل عقار
+                        |
+                            <a href="{{url("admin-panel/buildings/".$building->id."/images/")}}"> تعديل صور العقار</a>
+                        </h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -200,6 +242,7 @@
                     </div>
                     <!-- /.box-body -->
                 </div>
+
                 <!-- /.box -->
             </div>
             <!-- /.col -->

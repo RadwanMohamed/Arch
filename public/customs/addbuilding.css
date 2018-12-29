@@ -1,4 +1,5 @@
 .register{
+    margin-bottom: 4px !important;
     background: -webkit-linear-gradient(left, #2abb9b,#2abb9b);
     margin-top: 3%;
     padding: 3%;
@@ -89,7 +90,22 @@
 }
 .register-heading{
     text-align: center;
-    margin-top: 8%;
+    margin-top: 2%;
     margin-bottom: -15%;
     color: #495057;
+}
+
+.info-btn{
+    height: 34px;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px!important;
+    border-top-left-radius: 0px!important;
+    border-bottom-left-radius: 0px!important;
+    border: 2px;
+}
+.mages-btn{
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px!important;
+    border-top-left-radius: 4px!important;
+    border-bottom-left-radius: 4px!important;
 }

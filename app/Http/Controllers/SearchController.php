@@ -13,12 +13,6 @@ class SearchController extends ImageController
      * @param $query
      */
 
-    /**
-     * $min =  " " & max = " "
-     * $min = "gg" & max = "  "
-     * $min = " " & max = "jff"
-     * $min = "gg"  & max = "ffg"
-     */
     protected function search($request,$query)
     {
 

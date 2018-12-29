@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmailRequest;
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 
-class UserController extends Controller
+class UserController extends ImageController
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -88,9 +92,10 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        $this->deleteRelation($user);
         if($user->id == 1)
             returnredirect("admin-panel/users")->with('cant delete user no 1');
+
+        $this->deleteRelation($user);
         $user->delete();
         return redirect("admin-panel/users");
     }
@@ -112,6 +117,10 @@ class UserController extends Controller
             })
             ->editColumn('admin', function ($model) {
                 return $model->admin == 0 ? '<span class="badge badge-info">' . 'عضو' . '</span>' : '<span class="badge badge-warning">' . 'مدير الموقع' . '</span>';
+            })
+            ->editColumn('buildings', function ($model) {
+                return '<a href="' . url('/admin-panel/users/' . $model->id . '/buildings') . '" class="btn btn-info btn-circle"> العقارات</a> ';
+
             })
 
             ->editColumn('control', function ($model) {
@@ -138,6 +147,72 @@ class UserController extends Controller
 
     protected function deleteRelation($user){
         if ($user::has('buildings'))
+        {
+            foreach ($user->buildings as $building)
+            {
+                $this->deleteAll($building->images);
+                $this->removeAllUrl($building->images);
+
+            }
+
             $user->buildings()->delete();
+
+        }
     }
+
+    /**
+     * display the form of reset password
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function resetPasswordView(User $user)
+    {
+        return view('website.user.resetpassword',compact('user'));
+    }
+
+    /**
+     * reset password
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function updatePassword( PasswordRequest $request,User $user)
+    {
+
+        $user->update(['password' => Hash::make($request->password)]);
+        Auth::logout();
+        return redirect("/login");
+
+    }
+    /**
+     * display the form of reset email
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function resetEmailView(User $user)
+    {
+        return view('website.user.changeemail',compact('user'));
+    }
+
+    /**
+     * reset email
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function updateEmail( EmailRequest $request,User $user)
+    {
+
+        $user->update(['email' => $request->email]);
+        Auth::logout();
+        return redirect("/login");
+
+    }
+
+    /**
+     * display buildings for specific user
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+
+    public function userBuildings(User $user)
+    {
+        $buildings = $user->buildings;
+        return view('admin.buildings.index', compact('buildings'));
+    }
+
 }

@@ -91,7 +91,7 @@ class BuildingController extends ImageController
         $building->property = $request->property;
         $building->desc = $request->desc;
         $building->meta = $request->meta;
-        $building->address = $request->address;
+        $building->address_id = $request->address_id;
         $building->description = $request->description;
         $building->status = $request->status;
         $building->user_id = Auth::id();
@@ -111,6 +111,8 @@ class BuildingController extends ImageController
      */
     public function destroy(Building $building)
     {
+        $this->deleteAll($building->images);
+        $this->removeAllUrl($building->images);
         $building->delete();
         return redirect('/admin-panel/buildings');
     }
@@ -125,5 +127,42 @@ class BuildingController extends ImageController
         return view('admin.buildings.mybuildings', compact('buildings'));
     }
 
+    /**
+     * activate specific building
+     * @param Building $building
+     */
+    public function activate(Building $building)
+    {
+        $building->update(['status'=>1]);
+        return redirect('/admin-panel/buildings');
+
+    }
+
+    /**
+     * unactivate the building
+     * @param Building $building
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function unactivate(Building $building)
+    {
+        $building->update(['status'=>0]);
+        return redirect('/admin-panel/buildings');
+
+    }
+
+    /**
+     * activate all buildings
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function activateAll()
+    {
+        $buildings = Building::where('status','=',0)->get();
+        foreach ($buildings as $building)
+        {
+            $this->activate($building);
+        }
+        return redirect('/admin-panel/buildings');
+
+    }
 
 }

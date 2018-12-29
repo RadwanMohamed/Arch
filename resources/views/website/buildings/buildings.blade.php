@@ -33,10 +33,18 @@
                                 </div>
 
                                 <div class="separator clear-left">
+                                    @if($building->status == 1)
                                     <p>
                                         <a href="/buildings/{{$building->id}}" class="hidden-sm"> اظهر التفاصيل </a>
                                     </p>
-
+                                    @else
+                                        <p>
+                                            <button  class="btn btn-danger disabled pull-left"> فى انتظار التفعيل  </button>
+                                        </p>
+                                        <p>
+                                            <a href="/buildings/{{$building->id}}/edit" class="btn btn-success pull-right"> تعديل العقار </a>
+                                        </p>
+                                    @endif
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
